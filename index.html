@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>触って覚える！ アトピー性皮膚炎マスター</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="小児のアトピー性皮膚炎を、乳児・学童・思春期の3症例で触って学ぶ。診断、FTU、ステロイドの選び方、プロアクティブ療法、重症度評価、全身療法まで。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Barlow+Semi+Condensed:wght@400;500;600;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap">
+<style>
+/* 「触って覚える！」シリーズの見た目（血液検査マスターと同じ）。丸ゴシック・クリームの地・太い紺の輪郭線・下側の厚み・章ごとの色の帯。ライトテーマ固定。 */
+:root{
+  color-scheme:light;
+  --body:#FFF3E4;
+  --deck:linear-gradient(168deg,#FFEFD6 0%,#FFE0EC 46%,#E3ECFF 100%);
+  --sheet:#FFFFFF; --panel2:#FFF8EE;
+  --ink:#262745; --ink-2:#55577A; --ink-3:#767898; --line:#F0DFD0;
+  --accent:#FF5E8A; --accent-soft:#FFF0F4;
+  --blue:#5B7CFA; --blue-soft:#EEF2FF;
+  --red:#E0334F; --red-soft:#FFECEF;
+  --ok:#0B8F66; --ok-soft:#E8FBF3; --warn:#B86A00; --warn-soft:#FFF4DE;
+  --gline:#2E2545; --glip:#C3B4D6;
+  --chap:#5B7CFA;
+  --skin:#F8DCC8; --sk1:#F4B7A2; --sk2:#EC8676; --sk3:#D24A5A;
+  --f-body:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --f-num:"Barlow Semi Condensed","Roboto Condensed","Helvetica Neue",Arial,sans-serif;
+  --f-logo:"Dela Gothic One","M PLUS Rounded 1c","Hiragino Maru Gothic ProN",sans-serif;
+  --r:18px;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+[data-chap="0"]{--chap:#FF8A3D} [data-chap="1"]{--chap:#4FA8FF} [data-chap="2"]{--chap:#8B6BFF} [data-chap="3"]{--chap:#12C48B}
+*{box-sizing:border-box}
+html{background:var(--body)}
+html,body{min-height:100%;max-width:100%;overflow-x:hidden}@supports(overflow:clip){html,body{overflow-x:clip}}
+img,svg{max-width:100%}
+[hidden]{display:none!important}
+body{margin:0;background:var(--deck) fixed;background-color:var(--body);color:var(--ink);font:500 15px/1.7 var(--f-body);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;touch-action:manipulation}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+h1,h2,h3{font-weight:800;text-wrap:balance;margin:0;line-height:1.35}
+p{margin:0}
+.wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 96px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums;font-weight:600}
+.note{font-size:12.5px;color:var(--ink-3);line-height:1.6}
+.sheet{background:var(--sheet);border:3px solid var(--gline);border-radius:var(--r);box-shadow:0 4px 0 var(--glip);padding:16px;min-width:0}
+.sheet h3{font-size:16.5px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.sec{padding-top:16px;display:flex;flex-direction:column;gap:16px}
+.lbl{font-size:12.5px;font-weight:800;color:var(--ink-3)}
+.q{font-size:16px}
+
+/* ---------- タイトル ---------- */
+.title{position:fixed;inset:0;z-index:90;display:grid;place-items:center;overflow:auto;
+  padding:max(12px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  background:url("assets/img/bg_title_atopy.webp") center/cover no-repeat,url("assets/img/bg_clinic.webp") center/cover no-repeat,#FFF1E4}
+.title::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(255,248,238,.30) 0%,rgba(255,240,244,.55) 55%,rgba(255,243,228,.88) 100%);pointer-events:none}
+.tstage{position:relative;width:min(440px,100%);display:flex;flex-direction:column;align-items:center;gap:10px}
+.tlogo{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:4px;text-align:center}
+.tlogoimg{width:min(92vw,440px);height:auto;filter:drop-shadow(0 6px 10px rgba(60,30,80,.25));animation:pop .6s both}
+.tlogo .series{font:400 clamp(34px,10.5vw,50px)/1.1 var(--f-logo);color:#fff;letter-spacing:.02em;-webkit-text-stroke:7px var(--gline);paint-order:stroke fill;text-shadow:0 5px 0 rgba(46,37,69,.35);white-space:nowrap}
+.k1{color:#FFC53D}.k2{color:#FF7FA4}.k3{color:#4FD8B4}.k4{color:#7FA0FF}
+.tlogo .name{display:inline-block;font:800 clamp(18px,5.4vw,24px)/1.2 var(--f-body);color:#fff;letter-spacing:.08em;background:linear-gradient(180deg,#FF9A6B,#F0607A);border:3px solid var(--gline);border-radius:999px;padding:5px 20px 6px;box-shadow:0 4px 0 rgba(46,37,69,.3);text-shadow:0 2px 0 rgba(46,37,69,.45)}
+.tlogo .tag{font-size:12px;font-weight:800;color:var(--ink-2);background:rgba(255,255,255,.9);border-radius:999px;padding:2px 12px}
+.tcast{display:flex;align-items:flex-end;justify-content:center;width:100%;height:clamp(150px,27vh,230px);position:relative}
+.tcast img{display:block;height:100%;width:auto;filter:drop-shadow(0 8px 10px rgba(60,30,80,.28))}
+.tcast .tm{height:56%;margin-right:-14px;transform:translateY(-22%) rotate(-4deg);animation:puku 3.6s ease-in-out infinite}
+.tcast .tn{height:86%;margin-left:-22px;position:relative;z-index:1}
+.tcast .tube{height:44%;width:auto;margin-left:-10px;filter:drop-shadow(0 6px 8px rgba(60,30,80,.22))}
+@keyframes puku{0%,100%{transform:translateY(-22%) rotate(-4deg) scale(.95)}45%{transform:translateY(-24%) rotate(-4deg) scale(1.05)}}
+.tsay{position:relative;font-size:13.5px;line-height:1.6;font-weight:700;text-align:center;background:#fff;border:3px solid var(--gline);border-radius:18px;padding:9px 14px;max-width:100%;box-shadow:0 4px 0 rgba(46,37,69,.22)}
+.tsay::after{content:"";position:absolute;left:52%;top:-10px;width:14px;height:14px;background:#fff;border-left:3px solid var(--gline);border-top:3px solid var(--gline);transform:rotate(45deg)}
+.tmenu{display:flex;flex-direction:column;gap:9px;width:100%;margin-top:4px}
+.tbtn{display:flex;align-items:center;gap:12px;text-align:left;padding:9px 14px 9px 9px;border-radius:20px;width:100%;background:#fff;border:3px solid var(--gline);box-shadow:0 5px 0 var(--glip);cursor:pointer;transition:transform .06s,box-shadow .06s}
+.tbtn:active{transform:translateY(5px);box-shadow:none}
+.tbtn img{flex:none;width:44px;height:44px}
+.tbtn b{display:block;font-size:16px;font-weight:800;line-height:1.3}
+.tbtn i{display:block;font-style:normal;font-size:12px;color:var(--ink-3);font-weight:700}
+.tbtn.go{background:linear-gradient(180deg,#FFC24D,#FF8A3D);box-shadow:0 5px 0 #C4560F;color:#fff}
+.tbtn.go b{text-shadow:0 2px 0 rgba(46,37,69,.4)} .tbtn.go i{color:#FFF4E4}
+.tfoot{display:flex;align-items:center;gap:10px;width:100%;margin-top:4px;background:rgba(255,255,255,.92);border:3px solid var(--gline);border-radius:999px;padding:5px 5px 5px 14px}
+.tprog{flex:1;height:12px;border-radius:999px;background:#F3E6EC;overflow:hidden;border:2px solid var(--gline)}
+.tprog i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FF5E8A,#FFB020 45%,#12C48B)}
+.tpct{font:700 15px var(--f-num);color:var(--ink-2);min-width:3.6em;text-align:right}
+.sndbtn{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid var(--gline);box-shadow:0 3px 0 var(--glip);cursor:pointer;padding:0}
+.sndbtn:active{transform:translateY(3px);box-shadow:none}
+.sndbtn svg{width:20px;height:20px}
+.sndbtn[aria-pressed="false"]{background:#F1EEF6}
+@media(max-height:680px){.tcast{height:120px}.tsay{display:none}.tbtn{padding:6px 12px 6px 7px}.tbtn img{width:36px;height:36px}.tbtn i{display:none}}
+
+/* ---------- モーダル・演出 ---------- */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(50,30,60,.42);display:flex;align-items:center;justify-content:center;padding:16px;animation:fadein .16s ease-out}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.mbox{background:#fff;width:min(560px,100%);max-height:88%;overflow:auto;border:4px solid var(--gline);border-radius:26px;box-shadow:0 10px 0 rgba(46,37,69,.18),0 26px 60px rgba(80,40,90,.35);animation:pop .2s cubic-bezier(.2,1.3,.5,1)}
+@keyframes pop{from{transform:scale(.94) translateY(8px);opacity:0}to{transform:none;opacity:1}}
+.mhead{position:sticky;top:0;display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(180deg,#FF9A6B,#F0607A);border-bottom:4px solid var(--gline)}
+.mhead h3{flex:1;color:#fff;font-size:17px;text-shadow:0 2px 0 rgba(46,37,69,.45)}
+.mhead button{padding:5px 14px;border-radius:999px;background:#fff;border:3px solid var(--gline);font-weight:800;font-size:13px;box-shadow:0 3px 0 rgba(46,37,69,.35);cursor:pointer}
+.mbody{padding:16px;background:linear-gradient(180deg,#FFF9F3,#FFF1F5);font-size:14px;display:flex;flex-direction:column;gap:10px}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:120;overflow:hidden}
+#fx i{position:absolute;width:9px;height:14px;border-radius:2px;animation:fall 1.5s cubic-bezier(.2,.6,.5,1) forwards}
+@keyframes fall{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}100%{transform:translate3d(var(--dx),var(--dy),0) rotate(var(--rot));opacity:0}}
+.toast{position:fixed;left:50%;top:18%;transform:translateX(-50%);z-index:130;pointer-events:none;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);background:linear-gradient(135deg,#FF5E8A,#FFB020);color:#fff;font-weight:800;font-size:15px;line-height:1.35;border:3px solid var(--gline);padding:6px 18px 6px 6px;border-radius:999px;box-shadow:0 10px 30px rgba(190,60,110,.35);animation:toast 2.2s ease-out forwards;text-shadow:0 2px 0 rgba(46,37,69,.35)}
+.toast img{width:44px;height:44px;border-radius:50%;background:#E8FBF3;border:2px solid var(--gline);object-fit:cover;flex:none}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,10px) scale(.9)}12%{opacity:1;transform:translate(-50%,0)}80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-10px)}}
+
+/* ---------- いぶき先生 ---------- */
+.coach{display:flex;gap:10px;align-items:flex-start}
+.cav{flex:none;width:46px;height:46px;border-radius:50%;overflow:hidden;background:#E8FBF3;border:3px solid var(--gline);box-shadow:0 3px 0 var(--glip)}
+.cav img{display:block;width:100%;height:100%;object-fit:cover}
+.cbub{position:relative;flex:1;min-width:0;background:var(--panel2);border:2.5px solid var(--gline);border-radius:16px;padding:8px 12px 9px;font-size:14px;line-height:1.75}
+.cbub::before{content:"";position:absolute;left:-9px;top:14px;width:12px;height:12px;background:var(--panel2);border-left:2.5px solid var(--gline);border-bottom:2.5px solid var(--gline);transform:rotate(45deg)}
+.cwho{font-size:11.5px;font-weight:800;letter-spacing:.04em;color:var(--chap);margin-bottom:1px}
+.coach.ok .cbub,.coach.ok .cbub::before{background:var(--ok-soft)}
+.coach.ng .cbub,.coach.ng .cbub::before{background:var(--red-soft)}
+.coach.ok .cwho{color:var(--ok)} .coach.ng .cwho{color:var(--red)}
+.coach.nurse .cav{background:#FFE6EF}.coach.nurse .cwho{color:#E0507E}
+.cbub b{font-weight:800}
+
+/* ---------- ヘッダー ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#fff;border-bottom:3px solid var(--gline);box-shadow:0 4px 0 rgba(46,37,69,.12)}
+.top::before{content:"";display:block;height:5px;background:var(--chap)}
+.top .wrap{padding-block:8px 10px;display:flex;flex-direction:column;gap:8px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#fff}
+.bar{display:flex;align-items:center;gap:8px}
+.back{flex:none;border:3px solid var(--gline);background:#fff;border-radius:999px;padding:3px 12px 3px 9px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 3px 0 var(--glip)}
+.back:active{transform:translateY(3px);box-shadow:none}
+.bar h1{font-size:17px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge{flex:none;font:700 12px/1 var(--f-num);letter-spacing:.04em;padding:5px 9px;border-radius:999px;background:var(--chap);color:#fff;border:2px solid var(--gline)}
+.stepper{display:flex;gap:5px}
+.stepper button{flex:1;height:12px;border-radius:999px;background:#F3E6EC;border:2px solid var(--gline);padding:0;cursor:pointer}
+.stepper button.done{background:var(--chap)}
+.stepper button.now{background:#FFC53D}
+.stephead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.stepno{font:700 13px var(--f-num);color:#fff;background:var(--chap);border:2px solid var(--gline);border-radius:999px;padding:1px 10px;letter-spacing:.04em}
+.stephead h2{font-size:20px}
+
+/* ---------- ホーム ---------- */
+.home-hero{position:relative;margin-top:14px;padding:14px 128px 14px 16px;background:#fff;border:3px solid var(--gline);border-radius:22px;box-shadow:0 5px 0 var(--glip);overflow:hidden;min-height:160px}
+.home-hero .eyebrow{font:400 15px/1.2 var(--f-logo);color:#E0507E;letter-spacing:.02em}
+.home-hero h1{font-size:25px;margin-top:2px;word-break:keep-all}
+.home-hero p{color:var(--ink-2);margin:6px 0 0;font-size:13.5px;line-height:1.6}
+.home-hero .hdoc{position:absolute;right:4px;bottom:-40px;height:200px;width:auto;pointer-events:none}
+.hrow{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.hbtn{border:3px solid var(--gline);background:var(--panel2);border-radius:999px;padding:3px 14px;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 3px 0 var(--glip)}
+.hbtn:active{transform:translateY(3px);box-shadow:none}
+.bigprog{display:flex;align-items:center;gap:10px;margin-top:10px}
+.bigprog .bar2{flex:1;height:16px;border-radius:999px;background:#fff;border:3px solid var(--gline);overflow:hidden}
+.bigprog .bar2 i{display:block;height:100%;background:linear-gradient(90deg,#FF5E8A,#FFB020 45%,#12C48B)}
+.bigprog .pct{font:700 18px var(--f-num);flex:none}
+.cat{margin-top:22px}
+.cat h2{display:flex;align-items:center;gap:8px;font-size:15px;color:#fff;background:var(--chap);border:3px solid var(--gline);border-radius:16px;padding:7px 12px;box-shadow:0 4px 0 rgba(46,37,69,.22);margin-bottom:10px;text-shadow:0 1px 0 rgba(46,37,69,.35)}
+.list{display:flex;flex-direction:column;gap:9px}
+.item{display:flex;align-items:center;gap:11px;padding:10px 12px 10px 10px;background:var(--sheet);border:3px solid var(--gline);border-left:8px solid var(--chap);box-shadow:0 4px 0 var(--glip);border-radius:16px;text-align:left;width:100%;cursor:pointer;transition:transform .06s,box-shadow .06s}
+.item:active{transform:translateY(4px);box-shadow:none}
+.item .ic{width:54px;height:54px;flex:none;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--chap) 14%,#fff);border:2px solid var(--gline);overflow:hidden;font:800 20px var(--f-body);color:var(--chap)}
+.item .ic img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
+.item .tx{flex:1;min-width:0}
+.item b{display:block;font-size:15px;font-weight:800;line-height:1.4}
+.item small{display:block;color:var(--ink-3);font-size:12px;line-height:1.5;font-weight:700}
+.item.done{background:linear-gradient(90deg,rgba(43,217,160,.14),#fff 70%)}
+.stars{font-size:15px;letter-spacing:1px;color:#FFB020;-webkit-text-stroke:.6px var(--gline);white-space:nowrap}
+.stars .off{color:#EFE6F2}
+
+/* ---------- ボタン・選択肢 ---------- */
+.btn{border:3px solid var(--gline);background:#fff;border-radius:999px;padding:8px 18px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 var(--glip);transition:transform .06s,box-shadow .06s}
+.btn:active{transform:translateY(4px);box-shadow:none}
+.btn.solid{background:linear-gradient(180deg,#FFC24D,#FF8A3D);color:#fff;box-shadow:0 4px 0 #C4560F;text-shadow:0 2px 0 rgba(46,37,69,.4)}
+.btn.sm{padding:4px 14px;font-size:13.5px}
+.btn:disabled{opacity:.4;cursor:default;transform:none}
+.nav{display:flex;gap:10px;justify-content:space-between;margin-top:4px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{background:#fff;border:2.5px solid var(--gline);border-radius:14px;padding:9px 12px;text-align:left;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 3px 0 var(--glip)}
+.opt:active{transform:translateY(3px);box-shadow:none}
+.opt[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.opt.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.opt.wrong{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.opt.missed{border-style:dashed;border-color:var(--ok)}
+.opt:disabled{cursor:default;transform:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:2.5px solid var(--gline);background:#fff;border-radius:99px;padding:3px 12px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 2px 0 var(--glip)}
+.chip[aria-pressed="true"]{background:var(--chap);color:#fff}
+.chip.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.chip.wrong{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.chip:disabled{cursor:default}
+.mrow{display:flex;flex-direction:column;gap:6px;padding:10px 0;border-bottom:2px dashed var(--line)}
+.mrow:last-of-type{border-bottom:0}
+.mrow > b{font-size:14px}
+.fb:empty{display:none}
+.tipbox{padding:10px 12px;border-radius:14px;background:var(--blue-soft);border:2.5px solid var(--gline);font-size:13.5px}
+.tipbox b{font-weight:800}
+
+/* ---------- 問診 ---------- */
+.scene{position:relative;aspect-ratio:16/9;max-width:100%;border:3px solid var(--gline);border-radius:20px;overflow:hidden;background:#FFF1E4 center/cover no-repeat;box-shadow:0 4px 0 var(--glip)}
+.scene::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(transparent,rgba(46,37,69,.28))}
+.scene-kid{position:absolute;bottom:-6px;left:50%;transform:translateX(-58%);height:88%;width:auto;z-index:1;filter:drop-shadow(0 6px 10px rgba(40,20,60,.3))}
+.scene-tag{position:absolute;left:10px;bottom:10px;z-index:2;background:#fff;border:3px solid var(--gline);border-radius:14px;padding:2px 12px;box-shadow:0 3px 0 var(--glip);line-height:1.4}
+.scene-tag b{display:block;font-size:15px}.scene-tag span{font-size:11.5px;color:var(--ink-3)}
+.story{padding:9px 12px;border-radius:14px;background:#FFF3DA;border:2px solid #FFC85C;font-size:14px;line-height:1.75}
+.story i{display:block;font-style:normal;font-size:10.5px;font-weight:800;color:#9A6400}
+.story.doc{background:var(--blue-soft);border-color:#AFC0FF}.story.doc i{color:#3557D6}
+.vitals{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
+.vital{padding:6px 10px;border-radius:12px;background:var(--panel2);border:2px solid var(--line);min-width:0}
+.vital span{display:block;font-size:10.5px;color:var(--ink-3);font-weight:800}
+.vital b{font-size:13.5px;font-weight:800;line-height:1.45;display:block}
+
+/* ---------- 皮膚マップ ---------- */
+.bodywrap{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:12px;align-items:start}
+@media(max-width:460px){.bodywrap{grid-template-columns:minmax(0,150px) minmax(0,1fr)}}
+.bodyfig{background:linear-gradient(180deg,#FFF9F2,#FFEFF4);border:2.5px solid var(--gline);border-radius:16px;padding:4px}
+.bodyfig svg{display:block;width:100%;height:auto}
+.rg{cursor:pointer}
+.rg:hover > :first-child{filter:brightness(1.04)}
+.rg.sel{filter:drop-shadow(0 0 3px #FFB020) drop-shadow(0 0 3px #FFB020)}
+.finding{display:flex;flex-direction:column;gap:6px;min-width:0}
+.finding h4{margin:0;font-size:15.5px}
+.ftags{display:flex;flex-wrap:wrap;gap:5px}
+.ftag{font-size:11.5px;font-weight:800;border:2px solid var(--gline);border-radius:99px;padding:0 9px;background:#fff}
+.ftag.t-red{background:#FFE1E1}.ftag.t-wet{background:#E1F0FF}.ftag.t-lic{background:#EDE3D2}.ftag.t-scr{background:#FFF0CC}.ftag.t-dry{background:#F2F2F2}.ftag.t-nod{background:#F6D7E8}
+.sevkey{display:flex;gap:6px;align-items:center;font-size:11px;color:var(--ink-3);font-weight:800;flex-wrap:wrap}
+.sevkey i{display:inline-block;width:16px;height:12px;border-radius:4px;border:1.5px solid var(--gline);vertical-align:-1px;margin-right:3px}
+.seen{font:700 13px var(--f-num);color:var(--ink-3)}
+
+/* ---------- メーター・グラフ ---------- */
+.meters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.meter{padding:6px 10px;border-radius:12px;background:var(--panel2);border:2px solid var(--line)}
+.meter span{display:block;font-size:11px;color:var(--ink-3);font-weight:800}
+.meter b{font:700 20px/1.2 var(--f-num)}
+.meter .mb{height:9px;border-radius:99px;background:#fff;border:2px solid var(--gline);overflow:hidden;margin-top:3px}
+.meter .mb i{display:block;height:100%;transition:width .35s}
+.fig{border:2.5px solid var(--gline);border-radius:14px;background:#fff;overflow:hidden}
+.fig svg{display:block;width:100%;height:auto}
+.fig text{fill:var(--ink-3);font-family:var(--f-body);font-size:11px;font-weight:700}
+.toggles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.tog{display:flex;align-items:center;gap:8px;text-align:left;border:2.5px solid var(--gline);background:#fff;border-radius:14px;padding:8px 10px;cursor:pointer;box-shadow:0 3px 0 var(--glip);font-size:13px;font-weight:800;line-height:1.35}
+.tog .sw{flex:none;width:34px;height:20px;border-radius:99px;background:#E7E1EE;border:2px solid var(--gline);position:relative;transition:background .2s}
+.tog .sw::after{content:"";position:absolute;top:1px;left:1px;width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid var(--gline);transition:left .2s}
+.tog[aria-pressed="true"]{background:color-mix(in srgb,var(--chap) 12%,#fff)}
+.tog[aria-pressed="true"] .sw{background:var(--chap)}
+.tog[aria-pressed="true"] .sw::after{left:15px}
+.tog small{display:block;font-size:11px;color:var(--ink-3);font-weight:700}
+.cyc{display:block;width:100%;max-width:340px;margin:0 auto}
+.cyc .nd{transition:transform .25s;transform-box:fill-box;transform-origin:center}
+.cyc .nd.hit{transform:scale(1.12)}
+.cyc text{font-family:var(--f-body);font-weight:800}
+input[type=range]{width:100%;accent-color:var(--chap);height:28px}
+.ctrl{display:flex;flex-direction:column;gap:2px}
+.ctrl label{font-size:12px;font-weight:800;color:var(--ink-3)}
+.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px}
+.ro{padding:6px 10px;border-radius:12px;background:var(--panel2);border:2px solid var(--line)}
+.ro span{display:block;font-size:10.5px;color:var(--ink-3);font-weight:800}
+.ro b{font:700 18px/1.25 var(--f-num)}
+.ro b.jp{font:800 14px/1.4 var(--f-body)}
+.ro b.bad{color:var(--red)} .ro b.good{color:var(--ok)}
+
+/* ---------- ランクの階段 ---------- */
+.ladder{display:flex;flex-direction:column;gap:5px}
+.rung{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:center;border:2.5px solid var(--gline);border-radius:12px;padding:5px 10px;background:#fff;font-size:13px;font-weight:700}
+.rung .g{font:700 16px var(--f-num);text-align:center;border-radius:8px;color:#fff;border:2px solid var(--gline)}
+.rung small{display:block;font-size:11px;color:var(--ink-3)}
+
+/* ---------- FTU ---------- */
+.ftu{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;align-items:center}
+.ftu svg{width:120px;height:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th,.tbl td{padding:7px 6px;border-bottom:2px dashed var(--line);text-align:left;vertical-align:middle}
+.tbl th{font-size:12px;color:var(--ink-3);font-weight:800}
+.tbl td.n{font:700 15px var(--f-num);text-align:right;white-space:nowrap}
+.tblwrap{overflow-x:auto}
+.numin{width:4.2em;font:700 16px var(--f-num);text-align:right;border:2.5px solid var(--gline);border-radius:10px;padding:3px 6px;background:#fff}
+.numin.right{background:var(--ok-soft);border-color:var(--ok)} .numin.wrong{background:var(--red-soft);border-color:var(--red)}
+.bars{display:flex;flex-direction:column;gap:5px}
+.barrow{display:grid;grid-template-columns:88px 1fr 42px;gap:8px;align-items:center;border:0;background:none;padding:2px 0;text-align:left;cursor:pointer;font-size:13px;font-weight:800}
+.barrow .tr{height:16px;border-radius:99px;background:#F5EEF4;border:2px solid var(--gline);overflow:hidden}
+.barrow .tr i{display:block;height:100%;background:linear-gradient(90deg,#FFC53D,#F0607A);transition:width .5s}
+.barrow b{font:700 15px var(--f-num);text-align:right}
+.barrow[aria-pressed="true"]{color:var(--accent)}
+
+/* ---------- スキンケア表 ---------- */
+.sk{width:100%;border-collapse:separate;border-spacing:3px;font-size:12.5px;text-align:center}
+.sk th{font-size:11.5px;color:var(--ink-3);font-weight:800}
+.sk td{border:2px solid var(--gline);border-radius:8px;padding:4px 2px;font-weight:800;background:#fff;min-width:2.6em}
+.sk td.c1{background:#FFE7A8}.sk td.c2{background:#FFC9D3}.sk td.c3{background:#D9C8FF}.sk td.ch{background:#D8F5EA}
+
+/* ---------- EASI ---------- */
+.easi{display:flex;flex-direction:column;gap:10px}
+.ereg{border:2.5px solid var(--gline);border-radius:14px;padding:10px;background:#fff}
+.ereg h4{margin:0 0 4px;font-size:14.5px;display:flex;justify-content:space-between;gap:8px}
+.ereg h4 .num{font-size:17px;color:var(--chap)}
+.ereg p{font-size:12.5px;color:var(--ink-2);margin-bottom:6px}
+.egrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px}
+.estep{display:flex;align-items:center;justify-content:space-between;gap:4px;border:2px solid var(--line);border-radius:10px;padding:3px 6px;background:var(--panel2)}
+.estep span{font-size:11.5px;font-weight:800;color:var(--ink-3)}
+.estep .sv{display:flex;align-items:center;gap:4px}
+.estep button{width:26px;height:26px;border-radius:50%;border:2px solid var(--gline);background:#fff;font-weight:800;cursor:pointer;line-height:1;padding:0}
+.estep b{font:700 16px var(--f-num);min-width:1.1em;text-align:center}
+.estep.hit{border-color:var(--ok);background:var(--ok-soft)} .estep.miss{border-color:var(--red);background:var(--red-soft)}
+.big{font:700 52px/1 var(--f-num);color:var(--ink)}
+
+/* ---------- まとめ ---------- */
+.result-top{display:flex;align-items:flex-end;gap:12px;min-width:0}
+.result-top img{height:130px;width:auto;margin-bottom:-16px}
+.takeaways{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;counter-reset:t}
+.takeaways li{position:relative;padding:8px 10px 8px 42px;border-radius:14px;background:var(--panel2);border:2px solid var(--line);font-size:14px}
+.takeaways li::before{counter-increment:t;content:counter(t);position:absolute;left:10px;top:9px;width:24px;height:24px;border-radius:50%;background:var(--chap);color:#fff;border:2px solid var(--gline);font:700 13px/20px var(--f-num);text-align:center}
+.src{font-size:11.5px;color:var(--ink-3);line-height:1.6}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}#fx{display:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="fx" aria-hidden="true"></div>
+<script src="assets/sound.js"></script>
+<script src="assets/bgm.js"></script>
+<script>
+"use strict";
+/* ============ 共通 ============ */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const ART=n=>`assets/${n}.png`;
+const IMG=n=>`assets/img/${n}.webp`;
+const SND=window.VentSound||{play(){},enabled(){return true},setEnabled(){}};
+const BGM=window.VentBGM||{want(){},jingle(){return false},refresh(){},setEnabled(){}};
+const play=n=>{try{SND.play(n)}catch(e){}};
+const cl=(v,a=0,b=100)=>Math.max(a,Math.min(b,v));
+const KEY="ad.master.v1";
+let PROG={};try{PROG=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){PROG={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(PROG))}catch(e){}}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function coach(face,html,cls=""){
+  const nurse=cls.includes("nurse");
+  const src=nurse?IMG("face_minami_"+(face==="alert"?"think":face)):ART("face_"+face);
+  return `<div class="coach ${cls}"><div class="cav"><img src="${src}" alt=""></div><div class="cbub"><div class="cwho">${nurse?"看護師 ミナミ":"いぶき先生"}</div>${html}</div></div>`;
+}
+function kidImg(id,mood,cls,fallbackInit){
+  return `<img class="${cls}" src="${IMG("kid_"+id+"_"+mood)}" alt="" onerror="this.remove()">`;
+}
+function confetti(){
+  const fx=$("#fx");if(!fx)return;const cs=["#FF5E8A","#FFB020","#12C48B","#5B7CFA","#8B6BFF"];
+  for(let i=0;i<34;i++){const e=document.createElement("i");e.style.left=(40+Math.random()*20)+"%";e.style.top="38%";e.style.background=cs[i%5];
+    e.style.setProperty("--dx",(Math.random()*360-180)+"px");e.style.setProperty("--dy",(Math.random()*320-60)+"px");e.style.setProperty("--rot",(Math.random()*720)+"deg");fx.appendChild(e);setTimeout(()=>e.remove(),1600)}
+}
+function toast(msg,face="happy"){const t=document.createElement("div");t.className="toast";t.innerHTML=`<img src="${ART("face_"+face)}" alt="">${msg}`;document.body.appendChild(t);setTimeout(()=>t.remove(),2300)}
+function sndIcon(on){return on?`<svg viewBox="0 0 24 24" fill="none" stroke="#2E2545" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#FFC53D"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>`:`<svg viewBox="0 0 24 24" fill="none" stroke="#2E2545" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#E7E1EE"/><path d="M17 9l5 6M22 9l-5 6"/></svg>`}
+function sndBtn(){const on=SND.enabled();return `<button class="sndbtn" type="button" aria-pressed="${on}" aria-label="音" data-snd>${sndIcon(on)}</button>`}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-snd]");if(!b)return;const on=!SND.enabled();SND.setEnabled(on);try{BGM.setEnabled(on)}catch(_){ }$$("[data-snd]").forEach(x=>{x.setAttribute("aria-pressed",on);x.innerHTML=sndIcon(on)})});
+
+/* ============ 採点 ============ */
+let G=null;
+function grade(key,ok){
+  if(G&&!G.seen.has(key)){G.seen.add(key);G.n++;if(ok)G.ok++}
+  if(ok){play("confirm")}else play("miss");
+  return ok;
+}
+function win(msg){confetti();toast(msg);try{BGM.jingle("note")}catch(e){}}
+
+/* ============ 問題の部品 ============ */
+/* 1つ選ぶ */
+function mcq(box,{key,q,opts,a,exp,hints={},lead=""}){
+  const d=document.createElement("div");d.className="sheet stack";
+  d.innerHTML=`${lead}<h3 class="q">${q}</h3><div class="opts">${opts.map((o,i)=>`<button class="opt" type="button" data-i="${i}">${o}</button>`).join("")}</div><div class="fb"></div>`;
+  box.appendChild(d);
+  $$(".opt",d).forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.dataset.i,ok=i===a;grade(key,ok);
+    if(ok){$$(".opt",d).forEach(x=>{x.disabled=true;if(+x.dataset.i===a)x.classList.add("right")})}
+    else{b.classList.add("wrong");b.disabled=true}
+    $(".fb",d).innerHTML=coach(ok?"happy":"think",ok?exp:(hints[i]||"おしい。もう一度考えてみましょう。"),ok?"ok":"ng");
+  }));
+  return d;
+}
+/* いくつでも選ぶ */
+function msq(box,{key,q,items,exp,lead=""}){
+  const d=document.createElement("div");d.className="sheet stack";
+  const its=shuffle(items);
+  d.innerHTML=`${lead}<h3 class="q">${q}</h3><p class="note">あてはまるものをすべて選んで「答え合わせ」。</p><div class="opts">${its.map((o,i)=>`<button class="opt" type="button" aria-pressed="false" data-i="${i}">${o.t}</button>`).join("")}</div><div class="row"><button class="btn solid sm" type="button" data-chk>答え合わせ</button></div><div class="fb"></div>`;
+  box.appendChild(d);
+  $$(".opt",d).forEach(b=>b.addEventListener("click",()=>{if(b.disabled)return;b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")!=="true");play("tap")}));
+  $("[data-chk]",d).addEventListener("click",e=>{
+    let ok=true;
+    $$(".opt",d).forEach(b=>{const it=its[+b.dataset.i],on=b.getAttribute("aria-pressed")==="true";b.disabled=true;b.setAttribute("aria-pressed","false");
+      if(it.c&&on)b.classList.add("right");else if(it.c&&!on){b.classList.add("missed");ok=false}else if(!it.c&&on){b.classList.add("wrong");ok=false}
+      if(it.why)b.insertAdjacentHTML("beforeend",`<span class="note" style="display:block;font-weight:600;color:var(--ink-2)">${it.why}</span>`)});
+    grade(key,ok);e.target.disabled=true;
+    $(".fb",d).innerHTML=coach(ok?"happy":"think",(ok?"全部正解です。":"緑の点線は選びたかったもの、赤は選ばなくてよかったものです。")+"<br>"+exp,ok?"ok":"ng");
+  });
+  return d;
+}
+/* 行ごとに選ぶ（組み合わせ・仕分け・○×） */
+function match(box,{key,q,rows,opts,exp,lead="",note=""}){
+  const d=document.createElement("div");d.className="sheet stack";
+  d.innerHTML=`${lead}<h3 class="q">${q}</h3>${note?`<p class="note">${note}</p>`:""}<div>${rows.map((r,ri)=>`<div class="mrow" data-r="${ri}"><b>${r.t}</b><div class="chips">${(r.opts||opts).map((o,oi)=>`<button class="chip" type="button" data-o="${oi}">${o}</button>`).join("")}</div><div class="rfb note" hidden></div></div>`).join("")}</div><div class="fb"></div>`;
+  box.appendChild(d);
+  let done=0,allok=true;
+  $$(".mrow",d).forEach(row=>{const r=rows[+row.dataset.r];
+    $$(".chip",row).forEach(c=>c.addEventListener("click",()=>{
+      const oi=+c.dataset.o,ok=oi===r.a;
+      if(!row.dataset.tried){row.dataset.tried=1;if(!ok)allok=false}
+      play(ok?"confirm":"miss");
+      if(ok){$$(".chip",row).forEach(x=>{x.disabled=true;if(+x.dataset.o===r.a)x.classList.add("right")});done++;
+        if(r.why){const f=$(".rfb",row);f.hidden=false;f.innerHTML=r.why}
+        if(done===rows.length){grade(key,allok);$(".fb",d).innerHTML=coach(allok?"happy":"normal",(allok?"全部一度で正解です。":"全部そろいました。")+(exp?"<br>"+exp:""),allok?"ok":"")}}
+      else{c.classList.add("wrong");c.disabled=true}
+    }))});
+  return d;
+}
+function sheet(box,html,cls=""){const d=document.createElement("div");d.className="sheet stack "+cls;d.innerHTML=html;box.appendChild(d);return d}
+
+/* ============ 体の図 ============ */
+const REG_NAME={scalp:"頭",face:"顔",neck:"首",trunk:"体幹（胸・おなか・背中）",arms:"腕",elbows:"ひじの内側",hands:"手",legs:"脚",knees:"ひざ（裏・おもて）",ankles:"足首"};
+const TAGS={red:["紅斑","t-red"],pap:["丘疹・浸潤","t-red"],wet:["浸出液（じゅくじゅく）","t-wet"],scr:["掻破痕","t-scr"],lic:["苔癬化（ごわごわ）","t-lic"],scale:["鱗屑（ふけ状）","t-dry"],dry:["乾燥","t-dry"],nod:["痒疹（かたいしこり）","t-nod"],none:["皮疹なし","t-dry"]};
+function bodyShapes(kind){
+  const P={infant:{hr:40,tw:84,th:92,ua:36,fa:30,tl:42,sl:36},child:{hr:31,tw:72,th:112,ua:50,fa:44,tl:62,sl:56},teen:{hr:27,tw:72,th:124,ua:56,fa:50,tl:72,sl:66}}[kind];
+  const cx=110,cy=12+P.hr,hr=P.hr,neckY=cy+hr-4,ty=neckY+12,S={};
+  const k=0.968*hr,cyS=cy-0.25*hr;
+  S.face=[`<circle cx="${cx}" cy="${cy}" r="${hr}"/>`];
+  S.scalp=[`<path d="M${cx-k} ${cyS} A${hr} ${hr} 0 0 1 ${cx+k} ${cyS} Z"/>`];
+  S.neck=[`<rect x="${cx-11}" y="${neckY}" width="22" height="14" rx="5"/>`];
+  S.trunk=[`<rect x="${cx-P.tw/2}" y="${ty}" width="${P.tw}" height="${P.th}" rx="18"/>`];
+  const ax=[cx-P.tw/2-21,cx+P.tw/2+3];
+  S.arms=[];S.elbows=[];S.hands=[];
+  ax.forEach(x=>{S.arms.push(`<rect x="${x}" y="${ty+6}" width="18" height="${P.ua}" rx="9"/>`,`<rect x="${x}" y="${ty+6+P.ua}" width="18" height="${P.fa}" rx="9"/>`);
+    S.elbows.push(`<circle cx="${x+9}" cy="${ty+6+P.ua}" r="10.5"/>`);S.hands.push(`<ellipse cx="${x+9}" cy="${ty+12+P.ua+P.fa}" rx="11" ry="12"/>`)});
+  const lx=[cx-26,cx+4],ly=ty+P.th-10;
+  S.legs=[];S.knees=[];S.ankles=[];
+  lx.forEach(x=>{S.legs.push(`<rect x="${x}" y="${ly}" width="22" height="${P.tl}" rx="11"/>`,`<rect x="${x+1}" y="${ly+P.tl}" width="20" height="${P.sl}" rx="10"/>`,`<ellipse cx="${x+11+(x<cx?-4:4)}" cy="${ly+P.tl+P.sl+14}" rx="15" ry="8"/>`);
+    S.knees.push(`<circle cx="${x+11}" cy="${ly+P.tl}" r="12"/>`);S.ankles.push(`<circle cx="${x+11}" cy="${ly+P.tl+P.sl+4}" r="9.5"/>`)});
+  const H=ly+P.tl+P.sl+28;
+  return {S,H};
+}
+const ORDER=["trunk","arms","legs","neck","face","scalp","hands","elbows","knees","ankles"];
+function bodySVG(kind,map,sel){
+  const {S,H}=bodyShapes(kind),col=["var(--skin)","var(--sk1)","var(--sk2)","var(--sk3)"];
+  const pat=`<defs><pattern id="pp" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.5" fill="#9E1E3A" opacity=".55"/></pattern>
+  <pattern id="pl" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 6L6 0M-1 1L1 -1M5 7L7 5" stroke="#6B3B24" stroke-width="1.1" opacity=".55"/><path d="M0 0L6 6" stroke="#6B3B24" stroke-width="1.1" opacity=".45"/></pattern>
+  <pattern id="pw" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.8" fill="#fff" opacity=".85"/><circle cx="8" cy="7" r="1.1" fill="#CDE8FF"/></pattern>
+  <pattern id="ps" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M1 8L5 1" stroke="#fff" stroke-width="1.4" opacity=".9"/></pattern>
+  <pattern id="pd" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M1 2h3M4 6h3" stroke="#fff" stroke-width="1.3" opacity=".9"/></pattern>
+  <pattern id="pn" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="3" fill="#8C2244" opacity=".6"/></pattern></defs>`;
+  const ov={pap:"pp",lic:"pl",wet:"pw",scr:"ps",scale:"pd",dry:"pd",nod:"pn"};
+  let g="";
+  ORDER.forEach(id=>{const m=map[id]||{sev:0,tags:[]};const sh=S[id];if(!sh)return;
+    const base=sh.map(s=>s.replace("/>",` fill="${col[m.sev||0]}" stroke="#2E2545" stroke-width="2.2"/>`)).join("");
+    const over=(m.tags||[]).filter(t=>ov[t]).map(t=>sh.map(s=>s.replace("/>",` fill="url(#${ov[t]})" pointer-events="none"/>`)).join("")).join("");
+    g+=`<g class="rg${sel===id?" sel":""}" data-r="${id}" role="button" tabindex="0" aria-label="${REG_NAME[id]}">${base}${over}</g>`});
+  // 目・口（顔の上に）
+  const hr={infant:40,child:31,teen:27}[kind],cy=12+hr;
+  g+=`<g pointer-events="none" fill="#2E2545"><circle cx="${110-hr*.35}" cy="${cy+hr*.12}" r="${hr*.08}"/><circle cx="${110+hr*.35}" cy="${cy+hr*.12}" r="${hr*.08}"/><path d="M${110-hr*.18} ${cy+hr*.45} Q110 ${cy+hr*.58} ${110+hr*.18} ${cy+hr*.45}" stroke="#2E2545" stroke-width="2" fill="none"/></g>`;
+  return `<svg viewBox="0 0 220 ${H}" role="img" aria-label="皮膚の所見の図">${pat}${g}</svg>`;
+}
+function skinMap(box,{kind,map,intro}){
+  const kid={infant:"yuto",child:"aoi",teen:"hayato"}[kind];
+  const d=sheet(box,`<div class="row" style="justify-content:space-between;flex-wrap:nowrap"><img src="${IMG("kid_"+kid+"_itchy")}" alt="" style="width:64px;height:64px;border-radius:50%;border:3px solid var(--gline);background:#fff;object-fit:cover;flex:none" onerror="this.remove()"><div style="flex:1;min-width:0"><h3>からだを触って皮膚を見る</h3><span class="seen"></span></div></div>${intro?`<p class="note">${intro}</p>`:""}
+  <div class="bodywrap"><div class="bodyfig"></div><div class="finding"></div></div>
+  <div class="sevkey"><span><i style="background:var(--skin)"></i>なし</span><span><i style="background:var(--sk1)"></i>軽度</span><span><i style="background:var(--sk2)"></i>中等度</span><span><i style="background:var(--sk3)"></i>高度</span><span>模様＝皮疹の性状</span></div>`);
+  const ids=Object.keys(map).filter(k=>map[k].text),seen=new Set();
+  function show(id){
+    seen.add(id);play("tap");
+    $(".bodyfig",d).innerHTML=bodySVG(kind,map,id);bind();
+    const m=map[id]||{text:"とくに所見はありません。",tags:["none"]};
+    $(".finding",d).innerHTML=`<h4>${REG_NAME[id]}</h4><div class="ftags">${(m.tags&&m.tags.length?m.tags:["none"]).map(t=>`<span class="ftag ${TAGS[t][1]}">${TAGS[t][0]}</span>`).join("")}</div><p style="font-size:14px">${m.text||"とくに所見はありません。"}</p>`;
+    $(".seen",d).textContent=`見た部位 ${[...seen].filter(x=>ids.includes(x)).length}/${ids.length}`;
+  }
+  function bind(){$$(".rg",d).forEach(g=>{g.addEventListener("click",()=>show(g.dataset.r));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();show(g.dataset.r)}})})}
+  $(".bodyfig",d).innerHTML=bodySVG(kind,map,null);bind();
+  $(".finding",d).innerHTML=`<p class="note" style="font-size:13.5px">左の図の色がついたところをタップしてください。部位ごとに所見が出ます。</p>`;
+  $(".seen",d).textContent=`見た部位 0/${ids.length}`;
+  return d;
+}
+
+/* ============ 症例 ============ */
+const CASES=[
+/* ---------------- しくみ編 ---------------- */
+{id:"basic",code:"AD-00",chap:"0",title:"しくみ編：かゆみの悪循環",sub:"Itch-Scratch Cycle と治療の三本柱",kid:null,init:"基",
+ steps:[
+ {h:"かゆみの悪循環を回してみる",r(box){
+  sheet(box,coach("normal","アトピー性皮膚炎は、<b>皮膚のバリアの弱さ</b>と<b>炎症</b>と<b>かゆみ</b>がお互いを強め合う病気です。まず「かく」を何回か押して、悪循環を体で感じてみましょう。"));
+  const d=sheet(box,`<h3>かく → 皮膚が傷つく → もっとかゆい</h3>
+   <svg class="cyc" viewBox="0 0 340 250" aria-hidden="true">
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2E2545"/></marker></defs>
+    <path d="M205 52 Q290 70 282 150" fill="none" stroke="#2E2545" stroke-width="3" marker-end="url(#ah)"/>
+    <path d="M232 205 Q170 245 108 205" fill="none" stroke="#2E2545" stroke-width="3" marker-end="url(#ah)"/>
+    <path d="M58 150 Q50 70 135 52" fill="none" stroke="#2E2545" stroke-width="3" marker-end="url(#ah)"/>
+    <g class="nd" data-n="itch"><circle cx="170" cy="48" r="40" fill="#FFE1A8" stroke="#2E2545" stroke-width="3"/><text x="170" y="54" text-anchor="middle" font-size="17" fill="#2E2545">かゆみ</text></g>
+    <g class="nd" data-n="scr"><circle cx="275" cy="190" r="40" fill="#FFC9D3" stroke="#2E2545" stroke-width="3"/><text x="275" y="196" text-anchor="middle" font-size="17" fill="#2E2545">かく</text></g>
+    <g class="nd" data-n="inf"><circle cx="65" cy="190" r="44" fill="#F7A5A5" stroke="#2E2545" stroke-width="3"/><text x="65" y="186" text-anchor="middle" font-size="14" fill="#2E2545">皮膚炎の</text><text x="65" y="204" text-anchor="middle" font-size="14" fill="#2E2545">悪化</text></g>
+    <text x="170" y="140" text-anchor="middle" font-size="12" fill="#767898">バリアが壊れて</text><text x="170" y="156" text-anchor="middle" font-size="12" fill="#767898">刺激が入りやすくなる</text>
+   </svg>
+   <div class="meters">
+    <div class="meter"><span>バリア</span><b data-m="b">40</b><div class="mb"><i data-mb="b" style="background:#4FD8B4"></i></div></div>
+    <div class="meter"><span>炎症</span><b data-m="i">60</b><div class="mb"><i data-mb="i" style="background:#F0607A"></i></div></div>
+    <div class="meter"><span>かゆみ</span><b data-m="t">60</b><div class="mb"><i data-mb="t" style="background:#FFB020"></i></div></div>
+   </div>
+   <div class="row"><button class="btn solid" type="button" data-scr>かく！</button><span class="note" data-cnt>0回</span></div><div class="fb"></div>`);
+  let s={b:40,i:60,t:60},n=0;
+  const upd=()=>{["b","i","t"].forEach(k=>{$(`[data-m="${k}"]`,d).textContent=Math.round(s[k]);$(`[data-mb="${k}"]`,d).style.width=s[k]+"%"})};upd();
+  $("[data-scr]",d).addEventListener("click",()=>{n++;s.b=cl(s.b-7);s.i=cl(s.i+8);s.t=cl(s.t+7);upd();play("click");
+    const seq=["scr","inf","itch"];seq.forEach((k,j)=>setTimeout(()=>{const g=$(`[data-n="${k}"]`,d);g.classList.add("hit");setTimeout(()=>g.classList.remove("hit"),240)},j*240));
+    $("[data-cnt]",d).textContent=n+"回";
+    if(n===3)$(".fb",d).innerHTML=coach("think","かいた瞬間は少し楽になりますが、皮膚が傷ついてバリアが下がり、炎症とかゆみがむしろ増えました。これが <b>Itch-Scratch Cycle</b> です。「かかないで」と言うだけでは止まりません。");
+  });
+ }},
+ {h:"三本柱で悪循環を断ち切る",r(box){
+  sheet(box,coach("normal","治療は<b>三本柱</b>です。①悪化因子の検索と対策 ②スキンケア ③薬物療法。スイッチを入れて「1日すすめる」を押し、炎症とかゆみを下げてみましょう。どれが欠けると治らないでしょうか。"));
+  const d=sheet(box,`<div class="toggles">
+    <button class="tog" type="button" aria-pressed="false" data-o="f"><span class="sw"></span><span>① 悪化因子対策<small>汗・ダニ・刺激を減らす</small></span></button>
+    <button class="tog" type="button" aria-pressed="false" data-o="m"><span class="sw"></span><span>② スキンケア<small>洗って、毎日保湿</small></span></button>
+    <button class="tog" type="button" aria-pressed="false" data-o="d"><span class="sw"></span><span>③ 薬物療法<small>抗炎症外用薬</small></span></button></div>
+   <div class="meters">
+    <div class="meter"><span>バリア</span><b data-m="b"></b><div class="mb"><i data-mb="b" style="background:#4FD8B4"></i></div></div>
+    <div class="meter"><span>炎症</span><b data-m="i"></b><div class="mb"><i data-mb="i" style="background:#F0607A"></i></div></div>
+    <div class="meter"><span>かゆみ</span><b data-m="t"></b><div class="mb"><i data-mb="t" style="background:#FFB020"></i></div></div></div>
+   <div class="fig"><svg viewBox="0 0 320 130" data-chart></svg></div>
+   <div class="row"><button class="btn solid" type="button" data-day>1日すすめる</button><button class="btn sm" type="button" data-w>7日すすめる</button><button class="btn sm" type="button" data-reset>最初から</button><span class="num" data-d style="font-size:18px">0日目</span></div><div class="fb"></div>`);
+  const o={f:false,m:false,d:false};let s,h,won=false;
+  function reset(){s={b:40,i:60,t:60};h=[{...s}];upd()}
+  function step(){if(h.length>28)return;const itch=cl(.55*s.i+.45*(100-s.b)-(o.f?12:0)),scr=itch/100*30;
+    s={i:cl(s.i*(o.d?.55:.92)+scr*.6+(o.f?0:4)),b:cl(s.b+(o.m?10:0)-scr*.35-s.i*.04+1),t:itch};h.push({...s});upd();
+    if(!won&&s.i<20&&s.t<25){won=true;const all=o.f&&o.m&&o.d;grade("basic-pillars",true);win("悪循環を断ち切った！");
+      $(".fb",d).innerHTML=coach("happy",`${h.length-1}日で炎症とかゆみが落ち着きました。${all?"三本柱がそろうと一番早く治ります。":"三本柱を全部そろえると、もっと早くなります。試してみてください。"}<br>薬だけだとバリアが戻らずかゆみが残り、保湿だけだと炎症が消えません。<b>炎症を薬で止め、バリアをスキンケアで守り、悪化因子を減らす</b>。どれも必要です。`,"ok")}
+    else if(h.length>28&&!won){$(".fb",d).innerHTML=coach("think","4週間たっても治りませんでした。どの柱が足りないでしょうか。「最初から」でスイッチを変えてみましょう。","ng")}}
+  function upd(){["b","i","t"].forEach(k=>{$(`[data-m="${k}"]`,d).textContent=Math.round(s[k]);$(`[data-mb="${k}"]`,d).style.width=s[k]+"%"});
+    $("[data-d]",d).textContent=(h.length-1)+"日目";
+    const X=i=>24+i*(288/28),Y=v=>112-v;
+    const line=(k,c)=>`<polyline fill="none" stroke="${c}" stroke-width="3" stroke-linejoin="round" points="${h.map((p,i)=>X(i)+","+Y(p[k])).join(" ")}"/>`;
+    $("[data-chart]",d).innerHTML=`<line x1="24" y1="112" x2="312" y2="112" stroke="#C3B4D6" stroke-width="1.5"/><line x1="24" y1="12" x2="24" y2="112" stroke="#C3B4D6" stroke-width="1.5"/>
+     ${[0,7,14,21,28].map(x=>`<text x="${X(x)}" y="126" text-anchor="middle">${x}日</text>`).join("")}<text x="20" y="16" text-anchor="end">100</text><text x="20" y="114" text-anchor="end">0</text>
+     ${line("b","#12A88A")}${line("i","#E0334F")}${line("t","#E89A00")}
+     <text x="312" y="${Y(h[h.length-1].b)-4}" text-anchor="end" style="fill:#0B8F66">バリア</text>`;}
+  $$(".tog",d).forEach(t=>t.addEventListener("click",()=>{o[t.dataset.o]=!o[t.dataset.o];t.setAttribute("aria-pressed",o[t.dataset.o]);play("tap")}));
+  $("[data-day]",d).addEventListener("click",()=>{play("tick");step()});
+  $("[data-w]",d).addEventListener("click",()=>{play("tick");for(let i=0;i<7;i++)step()});
+  $("[data-reset]",d).addEventListener("click",()=>{won=false;$(".fb",d).innerHTML="";reset();play("tap")});
+  reset();
+ }},
+ {h:"三本柱に仕分ける",r(box){
+  match(box,{key:"basic-sort",q:"それぞれ、三本柱のどれにあたりますか。",opts:["悪化因子対策","スキンケア","薬物療法"],
+   rows:[
+    {t:"汗をかいたらシャワーで流す",a:0},
+    {t:"石鹸をよく泡立てて、手でやさしく洗う",a:1},
+    {t:"ステロイド外用薬を塗る",a:2},
+    {t:"ダニやほこりを減らす掃除",a:0},
+    {t:"入浴後に保湿剤を塗る",a:1},
+    {t:"タクロリムス軟膏やデルゴシチニブ軟膏を塗る",a:2,why:"ステロイド以外の抗炎症外用薬です。"}],
+   exp:"三本柱は「どれか1本」ではなく、組み合わせて使います。次の症例から、実際の子どもで練習しましょう。"});
+ }}
+ ],
+ take:["かく → 皮膚炎の悪化・バリア低下 → もっとかゆい、の悪循環（Itch-Scratch Cycle）を断ち切るのが治療の目標です。","治療は三本柱。①悪化因子の検索と対策 ②スキンケア ③薬物療法。","炎症は薬で止め、バリアはスキンケアで守ります。片方だけでは治りきりません。"]},
+
+/* ---------------- 症例① 乳児 ---------------- */
+{id:"infant",code:"AD-01",chap:"1",title:"顔のじゅくじゅくが広がる5か月",sub:"診断・ステロイドの塗り方・FTU・スキンケア",kid:"yuto",init:"ユ",kind:"infant",
+ pt:{name:"ユウトくん",age:"5か月 男児"},
+ steps:[
+ {h:"問診",r(box){
+  box.insertAdjacentHTML("beforeend",`<div class="scene" style="background-image:url('${IMG("cg_yuto")}'),url('${IMG("bg_clinic")}')"><div class="scene-tag"><b>ユウトくん</b><span>5か月 男児・母と来院</span></div></div>`);
+  sheet(box,`<div class="story"><i>お母さん</i>生後2か月ごろ、顔にぶつぶつが出てきました。ワクチンのときに聞いたら「乳児湿疹」と言われました。</div>
+   <div class="story"><i>お母さん</i>治らないので3か月で受診したら、ステロイドの塗り薬が出ました。でもネットで調べたら不安になって、数日で塗るのをやめました。</div>
+   <div class="story"><i>お母さん</i>最近は顔がじゅくじゅくして、体や手足にも広がってきました。かゆいのか、夜も寝づらそうです。</div>
+   <div class="story doc"><i>いぶき先生</i>ステロイドはどんなふうに塗っていましたか？</div>
+   <div class="story"><i>お母さん</i>Ⅳ群のステロイドを全身に使っていました。悪くなったら、赤みが強いところだけに、なるべく少しをすりこむように塗っていました。</div>
+   <div class="story doc"><i>いぶき先生</i>ふだんのお風呂と、おうちの環境を教えてください。</div>
+   <div class="story"><i>お母さん</i>お風呂は1日1回。体は石鹸で洗って、顔は石鹸を使わずにガーゼでふいています。家にペットはいませんが、祖父母の家にネコが1匹います。</div>`);
+  sheet(box,`<h3>診察</h3><div class="vitals">
+   <div class="vital"><span>出生</span><b>39週5日・2900g</b></div><div class="vital"><span>発達</span><b>定頸4か月・寝返り5か月</b></div>
+   <div class="vital"><span>家族歴</span><b>父：アトピー性皮膚炎・花粉症</b></div><div class="vital"><span>身長・体重</span><b>65cm（-0.1SD）・7.5kg（-0.4SD）</b></div>
+   <div class="vital"><span>しぐさ</span><b>抱っこで母の胸に顔をこすりつける。両足をもじもじ</b></div><div class="vital"><span>全身状態</span><b>バイタル正常・リンパ節腫大なし・脱水なし</b></div></div>`);
+ }},
+ {h:"皮膚を見る",r(box){
+  skinMap(box,{kind:"infant",intro:"乳児期の湿疹は頭・顔から始まり、体幹や手足へ下りていくことがよくあります。",map:{
+   scalp:{sev:2,tags:["red","pap"],text:"紅斑と、浸潤・丘疹があります。鱗屑はありません。"},
+   face:{sev:3,tags:["red","pap","scr","wet"],text:"頬に紅斑、浸潤・丘疹、ひっかき傷（掻破痕）、浸出液があり、じゅくじゅくしています。"},
+   trunk:{sev:0,tags:["none"],text:"紅斑も丘疹もありません。"},
+   elbows:{sev:2,tags:["red","pap","scr","lic"],text:"両ひじに紅斑、浸潤・丘疹、掻破痕、苔癬化があります。"},
+   knees:{sev:2,tags:["red","pap","scr","lic"],text:"両ひざに紅斑、浸潤・丘疹、掻破痕、苔癬化があります。"},
+   ankles:{sev:2,tags:["red","pap","scr","lic"],text:"両足首に紅斑、浸潤・丘疹、掻破痕、苔癬化があります。"}}});
+  sheet(box,coach("normal","関節部の苔癬化は、かき続けて皮膚が厚くなったサインです。湿疹が<b>顔だけでなく関節にも</b>あること、それが<b>何か月も続いている</b>ことに注目しましょう。"));
+ }},
+ {h:"アトピー性皮膚炎と診断できる？",r(box){
+  msq(box,{key:"inf-itch",q:"話せない赤ちゃんの「かゆみのサイン」はどれですか。",
+   items:[{t:"抱っこしたとき、胸に顔をこすりつける",c:1},{t:"タオルや寝具で顔をこする",c:1},{t:"寝かせると後頭部や背中をこすりつける",c:1},{t:"はだかにすると手で胸やおなかをこする",c:1},{t:"ひっかいたあと・ひっかき傷がある",c:1},{t:"指しゃぶりをする",c:0},{t:"ミルクの飲みが多い",c:0}],
+   exp:"ユウトくんは母の胸に顔をこすりつけ、頬に掻破痕がありました。乳児の瘙痒はこうした<b>しぐさ</b>と<b>ひっかき傷</b>で判断します。"});
+  match(box,{key:"inf-criteria",q:"診断基準の3項目。ユウトくんは満たしていますか。",opts:["満たす","満たさない"],
+   note:"アトピー性皮膚炎は、次の3項目をすべて満たすときに診断します（アトピー性皮膚炎診療ガイドライン2024）。",
+   rows:[{t:"① 瘙痒（かゆみ）",a:0,why:"顔をこすりつける・掻破痕あり。"},
+    {t:"② 特徴的な皮疹と分布（湿疹病変が、乳児では頭・顔から始まり体幹・四肢へ）",a:0,why:"頭・顔の湿疹に加えて、ひじ・ひざ・足首にも広がっています。"},
+    {t:"③ 慢性・反復性の経過（乳児では2か月以上、それ以外では6か月以上）",a:0,why:"生後2か月から5か月まで、3か月続いています。"}]});
+  mcq(box,{key:"inf-dx",q:"診断はどれですか。",opts:["アトピー性皮膚炎","乳児湿疹なので様子を見る","慢性湿疹。今後の経過で判断する"],a:0,
+   hints:{1:"「乳児湿疹」は乳児期の皮膚炎の<b>総称</b>で、アトピー性皮膚炎と別の病気ではありません。3項目を満たしているので、診断して治療を始めましょう。",2:"3項目とも満たしています。乳児は2か月以上続けばよいので、これ以上待つ必要はありません。"},
+   exp:"<b>アトピー性皮膚炎</b>と診断します。「乳児湿疹」は乳児期の皮膚炎の総称で、別の病気ではありません。顔以外の皮膚炎や家族歴（父がAD）も参考に、2か月以上続いたら診断します。脂漏性皮膚炎のように自然によくなるものもありますが、どれもスキンケアが基本で、ADと合併することもあります。"});
+ }},
+ {h:"塗り方を直す",r(box){
+  sheet(box,`<h3>ステロイド外用薬のランク</h3><div class="ladder">
+   <div class="rung"><span class="g" style="background:#B0234A">Ⅰ</span><span>ストロンゲスト<small>重症で使うことがある最強のランク</small></span></div>
+   <div class="rung"><span class="g" style="background:#E0507E">Ⅱ</span><span>ベリーストロング<small>重症の皮疹</small></span></div>
+   <div class="rung"><span class="g" style="background:#F08A3D">Ⅲ</span><span>ストロング<small>中等症の皮疹</small></span></div>
+   <div class="rung"><span class="g" style="background:#E0B400">Ⅳ</span><span>ミディアム<small>中等症〜軽症。顔は原則このランク以下</small></span></div>
+   <div class="rung"><span class="g" style="background:#7FB86B">Ⅴ</span><span>ウィーク<small>軽症</small></span></div></div>
+   <p class="note">重症度でランクを選びます。軽微な皮疹にはステロイドを含まない外用薬。<b>小児だからという理由だけでランクを下げる必要はありません</b>。ただし乳幼児は効果が早く出るので、使う期間に注意します。急性増悪時は1日2回が原則、落ち着いたら1日1回も検討します。</p>`);
+  match(box,{key:"inf-rank",q:"ユウトくんには、どのランクから始めますか。",opts:["Ⅱ群","Ⅲ群","Ⅳ群","Ⅴ群"],
+   rows:[{t:"顔（紅斑・丘疹・浸出液）",a:2,why:"顔は吸収がよく副作用が出やすいので、原則ミディアム（Ⅳ群）以下。"},
+     {t:"体・手足（関節部の紅斑・苔癬化）",a:1,why:"Ⅳ群を全身に塗って改善しなかったので、体や手足はストロング（Ⅲ群）に上げます。"}]});
+  match(box,{key:"inf-fix",q:"これまでの塗り方の問題点に、対応を組み合わせましょう。",
+   rows:[{t:"全身にⅣ群を塗っていたが、皮膚炎がよくならない",opts:["体や手足はⅢ群を検討する","塗るのをやめて保湿だけにする","Ⅰ群を全身に塗る"],a:0},
+    {t:"赤みが強いところだけに塗っていて、よくならない",opts:["赤いところだけに限る","皮疹があるところより少し広めに塗る","1日おきに塗る"],a:1,why:"周りの軽い炎症や、見た目はふつうでもかゆいところにも塗ると、再燃予防と効果の最大化に役立ちます（湿疹のないところへの塗布は副作用に注意）。"},
+    {t:"少量をすりこむように塗っている",opts:["さらに薄くのばす","FTUを目安に、たっぷりのせるように塗る","ガーゼでこすって塗る"],a:1,why:"すりこむと量が足りず、皮膚を傷つけることもあります。"}]});
+ }},
+ {h:"FTUを体験して処方量を計算する",r(box){
+  const d=sheet(box,`<h3>1 FTU（フィンガーチップユニット）</h3>
+   <div class="ftu"><svg viewBox="0 0 120 230" aria-hidden="true" data-finger></svg>
+   <div class="stack"><div class="ctrl"><label for="ftuR">チューブをしぼる</label><input id="ftuR" type="range" min="0" max="120" value="0"></div>
+    <div class="readouts"><div class="ro"><span>出した量</span><b data-g>0.00 g</b></div><div class="ro"><span>塗れる広さ</span><b class="jp" data-a>—</b></div></div>
+    <p class="note">口径5mmのチューブから、大人の人差し指の<b>先端から第1関節まで</b>出した量が1 FTU ≒ 0.5 g。大人の手のひら2枚分の面積に塗れます。</p></div></div><div class="fb"></div>`);
+  const fin=$("[data-finger]",d);
+  function draw(v){const L=Math.min(v,100)/100*78,over=v>105;
+   fin.innerHTML=`<rect x="30" y="20" width="60" height="200" rx="30" fill="#F8DCC8" stroke="#2E2545" stroke-width="3"/>
+    <path d="M38 98 H82" stroke="#2E2545" stroke-width="2.5" stroke-dasharray="4 4"/><text x="60" y="114" text-anchor="middle" font-size="10" fill="#767898" font-weight="700">第1関節</text>
+    <rect x="44" y="24" width="32" height="14" rx="7" fill="#F2B9C6" opacity=".7"/>
+    ${L>0?`<rect x="45" y="${22+78-L+(over?-6:0)}" width="30" height="${L+(over?6:0)}" rx="12" fill="#FFFDF5" stroke="#C8B98F" stroke-width="2"/><path d="M50 ${30+78-L} q10 -6 20 0" stroke="#E5D9B8" stroke-width="2" fill="none"/>`:""}
+    <text x="60" y="200" text-anchor="middle" font-size="11" fill="#55577A" font-weight="800">人差し指</text>`;
+   const g=(Math.min(v,120)/100*0.5);$("[data-g]",d).textContent=g.toFixed(2)+" g";
+   $("[data-a]",d).textContent=v<1?"—":`大人の手のひら ${(g/0.25).toFixed(1)} 枚分`;
+   if(v>=95&&v<=105&&!d.dataset.w){d.dataset.w=1;grade("inf-ftu",true);win("1 FTU！");$(".fb",d).innerHTML=coach("happy","それが <b>1 FTU ≒ 0.5 g</b>。塗ったあと皮膚がテカッと光り、ティッシュが貼りつくくらいが目安です。","ok")}}
+  draw(0);$("#ftuR").addEventListener("input",e=>{draw(+e.target.value);play("tick")});
+
+  const LONG=[["顔と首",1],["片腕と手",1],["片腕と手",1],["片脚と足",1.5],["片脚と足",1.5],["体の前",1],["背中とおしり",1.5]];
+  const d2=sheet(box,`<h3>3〜6か月の赤ちゃんの全身に、何 FTU いる？</h3><p class="note">部位をタップして足していきます（Long CC, et al. 1991 の目安）。</p>
+   <div class="chips">${LONG.map((x,i)=>`<button class="chip" type="button" aria-pressed="false" data-i="${i}">${x[0]}</button>`).join("")}</div>
+   <div class="readouts"><div class="ro"><span>合計</span><b data-sum>0 FTU</b></div><div class="ro"><span>重さ</span><b data-sg>0 g</b></div></div><div class="fb"></div>`);
+  $$(".chip",d2).forEach(c=>c.addEventListener("click",()=>{c.setAttribute("aria-pressed",c.getAttribute("aria-pressed")!=="true");play("tap");
+   const sum=$$(".chip",d2).filter(x=>x.getAttribute("aria-pressed")==="true").reduce((a,x)=>a+LONG[+x.dataset.i][1],0);
+   $("[data-sum]",d2).textContent=sum+" FTU";$("[data-sg]",d2).textContent="約 "+(sum*0.5).toFixed(1)+" g";
+   if(sum===8.5)$(".fb",d2).innerHTML=coach("happy","全身で約8.5 FTU ≒ <b>約4 g（小さじ1杯）</b>。幼児で約6 g、小学生で8〜10 g、中学生で12〜15 gが全身1回分の目安です。思ったより多いと感じたら、それが「すりこみ不足」の正体です。","ok")}));
+
+  const rows=[
+   {n:"ヘパリン類似物質含有保湿剤",per:50,f:"全身 4 g × 1日2回 × 7日",g:56,b:2},
+   {n:"顔：Ⅳ群ステロイド",per:5,f:"1回 1 FTU × 1日2回 × 7日",g:7,b:2},
+   {n:"体：Ⅲ群ステロイド",per:5,f:"1回 3 FTU × 1日2回 × 7日",g:21,b:5}];
+  const d3=sheet(box,`<h3>1週間分の処方量を計算しよう</h3><p class="note">1 FTU ≒ 0.5 g。チューブの本数は切り上げます。</p>
+   <div class="tblwrap"><table class="tbl"><thead><tr><th>薬</th><th>必要量</th><th>g</th><th>本</th></tr></thead><tbody>
+   ${rows.map((r,i)=>`<tr><td><b style="font-size:13px">${r.n}</b><br><span class="note">${r.per} g/本</span></td><td style="font-size:12.5px">${r.f}</td>
+    <td><input class="numin" id="g${i}" inputmode="decimal" aria-label="${r.n}のグラム"></td><td><input class="numin" id="b${i}" inputmode="numeric" aria-label="${r.n}の本数"></td></tr>`).join("")}
+   </tbody></table></div><div class="row"><button class="btn solid sm" type="button" data-chk>答え合わせ</button></div><div class="fb"></div>`);
+  $("[data-chk]",d3).addEventListener("click",()=>{let ok=true;rows.forEach((r,i)=>{const g=$("#g"+i),b=$("#b"+i);
+    const gk=parseFloat(g.value)===r.g,bk=parseInt(b.value)===r.b;g.className="numin "+(gk?"right":"wrong");b.className="numin "+(bk?"right":"wrong");if(!gk||!bk)ok=false});
+   grade("inf-calc",ok);if(ok)win("処方量ぴったり！");
+   $(".fb",d3).innerHTML=coach(ok?"happy":"think",ok?"保湿剤 56 g → 2本、顔のⅣ群 7 g → 2本、体のⅢ群 21 g → 5本。たっぷり塗ると、5 gのチューブはすぐなくなります。処方量が少なすぎないか、毎回確かめましょう。":"もう一度。保湿剤は 4×2×7、顔は 0.5×1×2×7、体は 0.5×3×2×7 です。本数は切り上げます。",ok?"ok":"ng")});
+ }},
+ {h:"ステロイドが不安なお母さんに",r(box){
+  sheet(box,coach("think","お母さんはネットで調べて不安になり、塗るのをやめてしまいました。不安の多くは<b>正しい情報を知らない</b>ことから生まれます。まず、部位で吸収がどれくらい違うかを見てみましょう。"));
+  const AB=[["前腕（内側）",1.0],["手のひら",0.83],["足の裏",0.14],["足首",0.42],["背中",1.7],["頭皮",3.5],["わきの下",3.6],["おでこ",6.0],["頬・あご",13],["陰嚢",42]];
+  const w=v=>Math.max(4,(Math.log10(v)+1)/(Math.log10(42)+1)*100);
+  const d=sheet(box,`<h3>部位による吸収のちがい</h3><p class="note">前腕の内側を1としたときの吸収率（ヒドロコルチゾン。Feldmann RJ, Maibach HI. 1967。対数目盛り）。タップすると説明が出ます。</p>
+   <div class="bars">${AB.map((a,i)=>`<button class="barrow" type="button" data-i="${i}" aria-pressed="false"><span>${a[0]}</span><span class="tr"><i style="width:0"></i></span><b>×${a[1]}</b></button>`).join("")}</div><div class="fb"></div>`);
+  requestAnimationFrame(()=>setTimeout(()=>$$(".barrow i",d).forEach((x,i)=>x.style.width=w(AB[i][1])+"%"),60));
+  $$(".barrow",d).forEach(b=>b.addEventListener("click",()=>{$$(".barrow",d).forEach(x=>x.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");play("tap");
+   const i=+b.dataset.i,txt=i>=7?"角層が薄く、よく吸収されます。だから<b>顔は原則Ⅳ群以下</b>で、期間に気をつけます。":i<=3?"角層が厚く、吸収されにくい部位です。手足の厚い湿疹には強めのランクが必要になることがあります。":"中くらいの吸収です。";
+   $(".fb",d).innerHTML=coach("normal",`${AB[i][0]}は前腕の約${AB[i][1]}倍。${txt}`)}));
+  match(box,{key:"inf-myth",q:"お母さんの質問に、○か×で答えましょう。",opts:["○ 正しい","× まちがい"],
+   rows:[{t:"「ステロイドを塗ると皮膚が黒くなるんですよね？」",a:1,why:"色素沈着は<b>炎症後色素沈着</b>で、ステロイドの副作用ではありません。炎症を早く止めるほうが跡は残りにくくなります。"},
+    {t:"「適切に使えば、塗り薬で全身の副作用が起こることはまれ」",a:0,why:"炎症が治まってバリアが戻ると、経皮吸収は急に減ります。高ランクを大量・長期間使うとリスクが上がるので、量と期間を管理します。"},
+    {t:"「皮膚が薄くなる・血管が浮くなどの局所の副作用は、多くは中止や適切な処置で戻る」",a:0,why:"皮膚萎縮、毛細血管拡張、ざ瘡・毛包炎、皮膚感染症などがありえます。定期的に診て確認します。"},
+    {t:"「長く使うと効かなくなって、やめられなくなる」",a:1,why:"「ステロイド依存」「長期で効果減弱」に根拠はありません。根拠をもって説明します。"}]});
+  msq(box,{key:"inf-talk",q:"不安なお母さんへの関わり方として、よいものは？",
+   items:[{t:"不安や疑問をまず聴く",c:1},{t:"書面も使って、わかりやすく説明する",c:1},{t:"治療計画を一緒に立てる",c:1},{t:"医師・薬剤師で説明をそろえる",c:1},{t:"「ネットは見ないで」とだけ伝える",c:0},{t:"副作用の話はしない",c:0,why:"リスクとベネフィットの両方を説明します。"}],
+   exp:"情報提供の質を高め、信頼関係を築き、治療への主体的参加を支えます。「安心したい」気持ちには、くり返し、自信をもって説明しましょう。"});
+ }},
+ {h:"スキンケアと生活環境",r(box){
+  mcq(box,{key:"inf-wash",q:"顔はガーゼでふいているとのこと。どう指導しますか。",
+   opts:["ガーゼのまま、やさしくふく","顔も低刺激の石鹸をよく泡立て、手で洗ってよくすすぐ","お湯だけでしっかりこする"],a:1,
+   hints:{0:"ガーゼでこする刺激がバリアを壊します。汚れも落ちにくくなります。",2:"こすると皮膚を傷つけます。"},
+   exp:"石鹸・洗浄剤は、製品と洗い方に気をつければ管理に役立ちます（推奨度1、エビデンスC）。<b>低刺激で添加物が少ない製品</b>を<b>よく泡立てて手で洗い</b>、<b>残らないようによくすすぐ</b>。"});
+  mcq(box,{key:"inf-temp",q:"お風呂のお湯の温度は？",opts:["34〜36℃","38〜40℃","42〜43℃"],a:1,hints:{2:"熱いお湯はかゆみを強めます。",0:"ぬるすぎると汚れが落ちにくく、体も冷えます。"},
+   exp:"38〜40℃が、皮膚のバリア機能の回復にちょうどよい温度とされています。"});
+  mcq(box,{key:"inf-cat",q:"祖父母の家のネコ。どう考えますか。",
+   opts:["発症予防のため、ネコには会わせない","予防目的の接触回避は効果が乏しい。感作があり、触れると悪化するときに回避する","ネコを手放してもらう"],a:1,
+   hints:{0:"妊婦や子どもに、発症予防のためペットを避けるよう指導するのは有用ではありません。ネコとADの発症に明確な関連はなく、イヌではむしろリスクを下げる報告もあります。",2:"ペットは心の支えでもあります。まず悪化因子かどうかを確かめます。"},
+   exp:"すでに感作されていて、接触で悪化するのが明らかなら回避を指導します（寝室に入れない、ペットを洗う など）。悪化因子かどうかを見きわめることが大切です。"});
+ }}
+ ],
+ take:["乳児は「2か月以上続く、かゆみのある特徴的な湿疹」でアトピー性皮膚炎と診断します。「乳児湿疹」は総称で、別の病気ではありません。","ランクは重症度で選び、顔は原則Ⅳ群以下。皮疹より少し広めに、FTUを目安にたっぷりのせて塗ります。","1 FTU ≒ 0.5 g（大人の手のひら2枚分）。乳児の全身1回で約4 g。処方量が足りているか計算しましょう。","ステロイドへの不安には、聴いて、根拠をもって、一緒に計画を立てます。色素沈着は炎症のあとで、ステロイドの副作用ではありません。"]},
+
+/* ---------------- 症例② 学童 ---------------- */
+{id:"school",code:"AD-02",chap:"2",title:"塗ると治り、やめると悪くなる9歳",sub:"寛解導入・プロアクティブ療法・治療主体の移行",kid:"aoi",init:"ア",kind:"child",
+ pt:{name:"アオイちゃん",age:"9歳 女児"},
+ steps:[
+ {h:"問診",r(box){
+  box.insertAdjacentHTML("beforeend",`<div class="scene" style="background-image:url('${IMG("cg_aoi")}'),url('${IMG("bg_clinic")}')"><div class="scene-tag"><b>アオイちゃん</b><span>9歳 女児・母と来院</span></div></div>`);
+  sheet(box,`<div class="story"><i>お母さん</i>2歳ごろにアトピー性皮膚炎になりました。ステロイドと保湿剤をもらって、悪いときに塗っていました。季節で悪くなることはあっても、ほとんど症状がない時期もありました。</div>
+   <div class="story"><i>お母さん</i>でも小学生になってから少しずつ悪くなっています。寝ているときにかいているのか、朝起きるとひざから血が出ていることもあります。塗ると少しよくなって、やめると悪くなるのくり返しです。</div>
+   <div class="story"><i>お母さん</i>Ⅲ群のステロイドを、体や手足に湿疹があるときに塗っています。体はよくなるのに、手足はなかなか治りません。最近はベタベタするのを嫌がって、なかなか塗らせてくれません。</div>
+   <div class="story doc"><i>いぶき先生</i>ずっとお母さんが塗っているのですか？</div>
+   <div class="story"><i>お母さん</i>小さいころからずっと私です。何度か本人に塗らせたけれど、うまく塗れなくて、結局私が塗っています。</div>`);
+  sheet(box,`<div class="vitals"><div class="vital"><span>既往歴</span><b>とくになし</b></div><div class="vital"><span>家族歴</span><b>兄：AD・アレルギー性鼻炎</b></div><div class="vital"><span>全身状態</span><b>胸部・腹部に異常なし</b></div></div>`);
+ }},
+ {h:"皮膚を見る",r(box){
+  skinMap(box,{kind:"child",intro:"幼小児期は首や四肢の関節部に湿疹が出やすくなります。",map:{
+   scalp:{sev:1,tags:["scale"],text:"頭頂部に鱗屑（ふけのようなかさぶた）があります。"},
+   face:{sev:0,tags:["none"],text:"顔に皮疹はありません。"},
+   trunk:{sev:1,tags:["dry","pap"],text:"全体に乾燥しています。上背部に丘疹、おなかに紅斑があります。"},
+   elbows:{sev:2,tags:["red","scr"],text:"両ひじの内側（肘窩）に紅斑があります。"},
+   knees:{sev:3,tags:["red","nod","scr"],text:"ひざの裏（膝窩）に紅斑。両ひざに<b>痒疹</b>（かたく盛り上がったしこり）があり、夜にかいて出血しています。"}}});
+ }},
+ {h:"寛解導入のプランを立てる",r(box){
+  sheet(box,coach("think","問題は2つ。①<b>Ⅲ群で手足が治らない</b>（夜にかいて出血も）。②<b>悪いときだけ塗る</b>ので、寛解と増悪をくり返している。まず①、炎症をしっかり止める<b>寛解導入</b>です。"));
+  match(box,{key:"sch-plan",q:"部位ごとに外用薬を選びましょう。",
+   note:"Ⅲ群＝ベタメタゾン吉草酸エステル（リンデロンV®）、Ⅱ群＝ジフルプレドナート（マイザー®）など。保湿剤は全身に毎日。",
+   rows:[{t:"① 頭頂部の鱗屑",opts:["Ⅲ群ローション","Ⅲ群軟膏","Ⅱ群軟膏"],a:0,why:"髪のある部位は、ローションなど塗りやすい剤形にします。"},
+    {t:"② 背中の丘疹・体幹の乾燥",opts:["保湿剤だけ","Ⅲ群軟膏＋保湿剤","Ⅱ群軟膏"],a:1},
+    {t:"③ ひじ・ひざの裏の紅斑",opts:["Ⅳ群軟膏","Ⅲ群軟膏","Ⅰ群軟膏"],a:1},
+    {t:"④ ひざの痒疹（かたいしこり）",opts:["Ⅲ群軟膏","Ⅱ群軟膏","保湿剤だけ"],a:1,why:"痒疹や苔癬化のような厚い皮疹は、ランクを上げて（Ⅱ群）しっかり止めます。"}]});
+  mcq(box,{key:"sch-night",q:"寝ている間にかいて、ひざから出血します。追加するとよいのは？",
+   opts:["手袋をつけて寝かせる","軟膏を塗ったうえから、チューブ型包帯（チュビファースト® など）やリント布で保護する","かゆくても我慢するよう約束する"],a:1,
+   hints:{0:"手袋だけでは外れやすく、患部の保護にもなりません。",2:"かゆみは意志では止められません。"},
+   exp:"外用薬を塗ってから伸縮性チューブ包帯で覆う、またはリント布の毛羽立った側に亜鉛華軟膏を塗って湿疹部にあて包帯で固定します。<b>皮膚を守って、かくことによる悪化を防ぎます</b>。"});
+ }},
+ {h:"プロアクティブ療法",r(box){
+  sheet(box,coach("normal","見た目がきれいになっても、皮膚の下には<b>炎症のくすぶり</b>が残っています。2つの塗り方で8週間を比べてみましょう。点線より上が「見てわかる湿疹」です。"));
+  const DAYS={0:[],1:[0],2:[0,3],3:[0,2,4]};
+  const d=sheet(box,`<div class="chips" role="group" aria-label="塗り方"><button class="chip" type="button" data-m="re" aria-pressed="true">悪くなったら塗る（リアクティブ）</button><button class="chip" type="button" data-m="pro" aria-pressed="false">プロアクティブ療法</button></div>
+   <div class="ctrl" data-wk hidden><label for="wkR">よくなったあと、ステロイドを塗る日：週 <b data-wn>2</b> 日（保湿は毎日）</label><input id="wkR" type="range" min="0" max="3" value="2"></div>
+   <div class="fig"><svg viewBox="0 0 340 170" data-chart></svg></div>
+   <div class="readouts"><div class="ro"><span>湿疹が見えた日</span><b data-v></b></div><div class="ro"><span>ステロイドを塗った日</span><b data-a></b></div><div class="ro"><span>8週後</span><b class="jp" data-e></b></div></div><div class="fb"></div>`);
+  let mode="re",wk=2;
+  function sim(){let u=70,ph=0,st=0,vis=0,app=0,arr=[];for(let t=0;t<56;t++){let a;
+    if(mode==="re")a=u>35;else if(!ph){a=true;if(u*.78<12){ph=1;st=t+1}}else a=DAYS[wk].includes((t-st)%7);
+    if(a){u*=.78;app++}else u=Math.min(100,u+1.6+.025*u);if(u>35)vis++;arr.push({u,a})}return {arr,vis,app}}
+  function draw(){const r=sim(),X=i=>26+i*(306/55),Y=v=>140-v*1.2;
+   $("[data-chart]",d).innerHTML=`<rect x="26" y="${Y(100)}" width="306" height="${Y(35)-Y(100)}" fill="#FFECEF"/>
+    <line x1="26" y1="${Y(35)}" x2="332" y2="${Y(35)}" stroke="#E0334F" stroke-dasharray="5 4" stroke-width="1.6"/><text x="330" y="${Y(35)-4}" text-anchor="end" style="fill:#E0334F">見てわかる湿疹</text>
+    <line x1="26" y1="140" x2="332" y2="140" stroke="#C3B4D6" stroke-width="1.5"/>
+    ${[0,2,4,6,8].map(w=>`<text x="${X(w*7)}" y="156" text-anchor="middle">${w}週</text>`).join("")}
+    ${r.arr.map((p,i)=>p.a?`<rect x="${X(i)-1.6}" y="143" width="3.2" height="6" rx="1" fill="#8B6BFF"/>`:"").join("")}
+    <polyline fill="none" stroke="#2E2545" stroke-width="2.6" stroke-linejoin="round" points="${r.arr.map((p,i)=>X(i)+","+Y(p.u)).join(" ")}"/>
+    <text x="30" y="16" style="fill:#55577A">皮膚の下の炎症</text><text x="330" y="16" text-anchor="end" style="fill:#8B6BFF">▮ ステロイドを塗った日</text>`;
+   $("[data-v]",d).textContent=r.vis+" 日";$("[data-a]",d).textContent=r.app+" 日";
+   const last=r.arr[55].u;const e=$("[data-e]",d);e.textContent=last>35?"湿疹あり":last>22?"くすぶり":"落ち着いている";e.className="jp "+(last>35?"bad":last>22?"":"good");
+   if(mode==="pro"&&wk>=2&&!d.dataset.w){d.dataset.w=1;grade("sch-pro",true);win("再燃を防げた！");
+     $(".fb",d).innerHTML=coach("happy","リアクティブでは湿疹が何度も出ては消えました。プロアクティブでは<b>連日塗ってしっかり寛解させたあと、週2回ほど間隔をあけて塗り続ける</b>ことで、くすぶりが抑えられ、再燃がほとんどありません。ステロイドを塗った日数は大きく変わらないことにも注目です。","ok")}
+   if(mode==="pro"&&wk<2)$(".fb",d).innerHTML=coach("think","間隔をあけすぎると、くすぶりがまた育ってきます。","ng")}
+  $$("[data-m]",d).forEach(c=>c.addEventListener("click",()=>{mode=c.dataset.m;$$("[data-m]",d).forEach(x=>x.setAttribute("aria-pressed",x===c));$("[data-wk]",d).hidden=mode!=="pro";play("tap");draw()}));
+  $("#wkR").addEventListener("input",e=>{wk=+e.target.value;$("[data-wn]",d).textContent=wk;play("tick");draw()});
+  draw();
+  const plan=[["10/3","①・①","②・②","②・②","③・③"],["10/4","ー","ホ・ホ","ホ・ホ","ホ・ホ"],["10/5","①・①","②・②","②・②","③・③"],["10/6","ー","ホ・ホ","ホ・ホ","ホ・ホ"],["10/7","①・①","②・②","②・②","③・③"],["10/8","ー","ホ・ホ","ホ・ホ","ホ・ホ"],["10/9","ー","ホ・ホ","ホ・ホ","ホ・ホ"]];
+  const cls=v=>v.startsWith("①")?"c1":v.startsWith("②")?"c2":v.startsWith("③")?"c3":v.startsWith("ホ")?"ch":"";
+  sheet(box,`<h3>スキンケア表にすると、わかりやすい</h3><p class="note">寛解したら、連日 → 1日おき → 週2回と間隔をあけます。保湿は毎日。<b>湿疹が残る部位はステロイドを連日</b>塗ります。</p>
+   <div class="tblwrap"><table class="sk"><thead><tr><th>月日</th><th>頭</th><th>背中</th><th>ひじ・ひざの裏</th><th>ひざ（痒疹）</th></tr><tr><th></th><th>朝・夕</th><th>朝・夕</th><th>朝・夕</th><th>朝・夕</th></tr></thead>
+   <tbody>${plan.map(r=>`<tr><th class="num">${r[0]}</th>${r.slice(1).map(v=>`<td class="${cls(v)}">${v}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+   <p class="note">① Ⅲ群ローション　② Ⅲ群軟膏　③ Ⅱ群軟膏　ホ＝保湿剤（ヘパリン類似物質）</p>
+   <div class="tipbox">プロアクティブ療法は、悪化をくり返しやすい部位や慢性化した部位でも寛解を維持でき、<b>有用（エビデンスレベルA）で比較的安全</b>な方法です。</div>`);
+ }},
+ {h:"ステロイド以外の抗炎症外用薬",r(box){
+  const NS=[{n:"タクロリムス",b:"プロトピック®",age:24,mech:"カルシニューリン阻害",note:"0.03%（小児）。使用量制限あり。灼熱感・かゆみ・紅斑"},
+   {n:"デルゴシチニブ",b:"コレクチム®",age:6,mech:"JAK1-3阻害",note:"0.25%・0.5%。使用量制限あり。毛包炎・ざ瘡・接触皮膚炎"},
+   {n:"ジファミラスト",b:"モイゼルト®",age:3,mech:"PDE4阻害（cAMPを介した免疫調整）",note:"0.3%・1%。使用量制限なし。色素沈着障害・毛包炎"},
+   {n:"タピナロフ",b:"ブイタマー®",age:144,mech:"AhRを介した免疫調整",note:"1%。使用量制限なし・1日1回。毛包炎・接触皮膚炎・頭痛"}];
+  const d=sheet(box,`<h3>年齢を動かして、使える薬を確かめる</h3><div class="ctrl"><label for="ageR">年齢：<b data-age></b></label><input id="ageR" type="range" min="0" max="15" value="9"></div>
+   <div class="opts" data-ns></div><p class="note">適応年齢はスライド（PASCO 2026）の表による。実際の使用は最新の添付文書を確認してください。</p>`);
+  const toM=v=>v===0?3:v===1?6:v===2?12:(v-1)*12; // 0→3か月,1→6か月,2→1歳,3→2歳…
+  const lab=v=>v===0?"3か月":v===1?"6か月":(v-1)+"歳";
+  function upd(){const v=+$("#ageR").value,m=toM(v);$("[data-age]",d).textContent=lab(v);
+   $("[data-ns]",d).innerHTML=NS.map(x=>{const ok=m>=x.age;return `<div class="opt ${ok?"right":""}" style="cursor:default;${ok?"":"opacity:.55"}"><b>${x.n}</b>（${x.b}）　<span class="num">${x.age>=12?x.age/12+"歳":x.age+"か月"}〜</span>　${ok?"使える":"まだ使えない"}<span class="note" style="display:block;font-weight:600">${x.mech}。${x.note}</span></div>`}).join("")}
+  $("#ageR").max=16;$("#ageR").value=10;$("#ageR").addEventListener("input",()=>{upd();play("tick")});upd();
+  msq(box,{key:"sch-ns",q:"5か月のユウトくんの顔に使える非ステロイド性抗炎症外用薬は？",
+   items:[{t:"ジファミラスト",c:1,why:"3か月から。"},{t:"デルゴシチニブ",c:0,why:"6か月から。もう少しで使えます。"},{t:"タクロリムス",c:0,why:"2歳から。"},{t:"タピナロフ",c:0,why:"12歳から。"}],
+   exp:"非ステロイド性抗炎症外用薬は、<b>顔など副作用が出やすい部位</b>や<b>寛解維持</b>でステロイドの副作用を避けたいときに役立ちます。一方、抗炎症作用はステロイドより弱く、薬ごとの副作用があり、薬価も高めです。互いを直接比べた研究はまだありません。"});
+ }},
+ {h:"塗る人を、子どもへ",r(box){
+  sheet(box,coach("normal","9歳のアオイちゃんは、ずっとお母さんに塗ってもらっていて、ベタベタを嫌がっています。学童期は<b>治療の主体を養育者から子どもへ</b>移していく時期です。"));
+  match(box,{key:"sch-stage",q:"年齢ごとの「治療の主体」とポイントを組み合わせましょう。",
+   opts:["養育者のみ","養育者が主、子どもも","養育者→子どもを意識","子どもが主、養育者も"],
+   rows:[{t:"0〜2歳：養育者に病態と治療法を正しく理解してもらう",a:0},
+    {t:"幼児期：嫌がらずにできるよう、ほめながら習慣にする",a:1},
+    {t:"学童期：本人にわかる言葉で病態と治療の必要性を直接説明する。ただし一人にせず伴走する",a:2},
+    {t:"思春期：移行期医療を意識する",a:3}]});
+  msq(box,{key:"sch-adh",q:"アドヒアランスを上げる工夫として、よいものは？",
+   items:[{t:"家族で外用の時間を決め、着替えと一緒に薬をセットする",c:1,why:"ルーティーン化。"},{t:"手の届くところは自分で塗る、薬のセットは自分でする",c:1,why:"スモールステップ。"},{t:"できたことをほめる",c:1,why:"自己効力感を高める。"},{t:"ベタつきが嫌な気持ちに寄り添い、剤形の変更を相談する",c:1},{t:"塗れなかった日は叱る",c:0},{t:"今日から全部ひとりでやらせる",c:0,why:"伴走しながら少しずつ移します。"}],
+   exp:"毎日治療を続けられるのは「当たり前」ではありません。保護者と協働して、治療の効果を本人が実感できるようにしましょう。"});
+  mcq(box,{key:"sch-adm",q:"それでも広い範囲で寛解導入が難しいとき、入院加療の目的は？",
+   opts:["集中的な外用で早く寛解させ、教育的指導でアドヒアランスを高める","ステロイドの点滴をするため","家族の負担を減らすためだけ"],a:0,
+   exp:"皮疹が広範囲の重症例や、重症の皮膚炎が長く続く場合が適応です。疾患活動性を抑え、知識を深め、ステロイド忌避を解消し、悪化因子対策を一緒に立てられます。"});
+ }}
+ ],
+ take:["厚い皮疹（痒疹・苔癬化）が治らないときはランクを上げてしっかり寛解導入。夜間の掻破は包帯などで皮膚を保護します。","悪いときだけ塗ると、くすぶりが残って再燃をくり返します。寛解後も間隔をあけて塗り続けるプロアクティブ療法（エビデンスA）で維持します。","非ステロイド性抗炎症外用薬は、適応年齢と使用量制限の有無を確かめて使い分けます。","学童期は治療の主体を子どもへ。わかる言葉で説明し、ルーティーン化・スモールステップ・ほめることで伴走します。"]},
+
+/* ---------------- 症例③ 思春期 ---------------- */
+{id:"teen",code:"AD-03",chap:"3",title:"顔を隠して通学する14歳",sub:"重症度・EASI・QOL・全身療法・移行期医療",kid:"hayato",init:"ハ",kind:"teen",
+ pt:{name:"ハヤトくん",age:"14歳 男子"},
+ steps:[
+ {h:"問診",r(box){
+  box.insertAdjacentHTML("beforeend",`<div class="scene" style="background-image:url('${IMG("cg_hayato")}'),url('${IMG("bg_clinic")}')"><div class="scene-tag"><b>ハヤトくん</b><span>14歳 男子・160cm 50kg</span></div></div>`);
+  sheet(box,`<div class="story"><i>お母さん</i>乳児期にアトピー性皮膚炎になり、小学生で悪くなったときに入院して治療しました。それから本人も前向きになって、今はほとんど自分で治療しています。でも中学生になってから、少しずつ悪くなってきました。</div>
+   <div class="story"><i>お母さん</i>顔や手など見えるところの湿疹を隠すために、前髪を下ろして、夏でも長袖で学校に行っています。夜もかゆくて目が覚めて、学校で眠くなるみたいです。</div>
+   <div class="story"><i>お母さん</i>顔には非ステロイドの塗り薬を毎日、悪いときはⅣ群。体の広い範囲にⅢ群、手足の関節にはⅡ群を週2日塗って、悪いときは足しているそうです。</div>
+   <div class="story"><i>お母さん</i>毎日塗っていると思いますが、本人が管理しているので実際にはわかりません。大人になったらどうなるのか、どう付き合っていけばいいのか、心配です。</div>`);
+  sheet(box,`<div class="vitals"><div class="vital"><span>合併症</span><b>アレルギー性鼻炎・花粉-食物アレルギー</b></div><div class="vital"><span>家族歴</span><b>父：AD・アレルギー性鼻炎</b></div><div class="vital"><span>全身状態</span><b>胸部・腹部に異常なし</b></div></div>`);
+ }},
+ {h:"重症度を判定する",r(box){
+  const map={face:{sev:3,tags:["red","pap","scr","lic"],text:"額・頬に強い紅斑と丘疹、掻破痕。前髪で隠しています。<br><b>手のひら2枚分</b>",pal:2},
+   neck:{sev:3,tags:["red","lic","scr"],text:"首に苔癬化した紅斑。<br><b>手のひら1枚分</b>",pal:1},
+   hands:{sev:3,tags:["red","lic","scr"],text:"両手の甲に苔癬化と掻破痕。<br><b>手のひら2枚分</b>",pal:2},
+   elbows:{sev:3,tags:["red","pap","lic"],text:"両ひじの内側に浸潤のある紅斑と苔癬化。<br><b>手のひら2枚分</b>",pal:2},
+   knees:{sev:3,tags:["red","pap","lic","scr"],text:"両ひざの裏に浸潤のある紅斑、苔癬化。<br><b>手のひら2枚分</b>",pal:2},
+   trunk:{sev:1,tags:["dry","pap"],text:"乾燥と軽い丘疹。強い炎症ではありません。",pal:0},
+   legs:{sev:1,tags:["dry","scr"],text:"すねに乾燥と軽い掻破痕。強い炎症ではありません。",pal:0}};
+  sheet(box,coach("normal","「重症度のめやす」は、<b>強い炎症を伴う皮疹</b>が体表面積の何％にあるかで決めます。本人の手のひら1枚が約1％。部位をタップして、強い炎症の範囲を数えてみましょう。"));
+  skinMap(box,{kind:"teen",map});
+  const d=sheet(box,`<div class="readouts"><div class="ro"><span>強い炎症の範囲（めやす）</span><b>手のひら 9 枚 ≒ 9 %</b></div></div>
+   <div class="ctrl"><label for="bsaR">もし範囲が変わったら？　強い炎症を伴う皮疹：<b data-p>9</b> %</label><input id="bsaR" type="range" min="0" max="60" value="9"></div>
+   <div class="readouts"><div class="ro"><span>判定</span><b class="jp" data-c></b></div></div>
+   <table class="tbl"><tbody><tr><th>軽症</th><td>面積にかかわらず、軽度の皮疹のみ</td></tr><tr><th>中等症</th><td>強い炎症を伴う皮疹が体表面積の10%未満</td></tr><tr><th>重症</th><td>同 10%以上30%未満</td></tr><tr><th>最重症</th><td>同 30%以上</td></tr></tbody></table><p class="src">重症度のめやす（厚生労働科学研究班）</p>`);
+  const cls=p=>p===0?"軽症（強い炎症がない場合）":p<10?"中等症":p<30?"重症":"最重症";
+  const u=()=>{const p=+$("#bsaR").value;$("[data-p]",d).textContent=p;$("[data-c]",d).textContent=cls(p)};u();$("#bsaR").addEventListener("input",()=>{u();play("tick")});
+  mcq(box,{key:"teen-sev",q:"ハヤトくんの重症度は？",opts:["軽症","中等症","重症","最重症"],a:1,
+   hints:{0:"強い炎症を伴う皮疹があります。",2:"強い炎症の範囲は約9%で、10%未満です。",3:"30%には届いていません。"},
+   exp:"強い炎症を伴う皮疹が約9%なので<b>中等症</b>です。ただし顔・首・手という<b>見える場所</b>にあり、睡眠も妨げられています。面積だけでは測れない負担があることを覚えておきましょう。"});
+ }},
+ {h:"EASIをつける",r(box){
+  sheet(box,coach("normal","<b>EASI</b>はHOME（湿疹の臨床試験の評価をそろえる国際グループ）が推奨する重症度評価です。4つの部位ごとに、皮疹の性状（各0〜3）の合計 × 面積スコア（0〜6）× 部位の係数を出し、足し合わせます（最高72点）。説明を読んでつけてみましょう。"));
+  const REG=[{k:"h",n:"頭・首",w:[.1,.2],desc:"顔と首に、はっきりした紅斑・浸潤・掻破痕・苔癬化（いずれも中等度）。頭頸部の約2割。",ans:[2,2,2,2,2]},
+   {k:"u",n:"上肢",w:[.2,.2],desc:"手の甲とひじの内側に、中等度の紅斑・浸潤・掻破痕・苔癬化。上肢の約2割。",ans:[2,2,2,2,2]},
+   {k:"t",n:"体幹",w:[.3,.3],desc:"軽い紅斑・丘疹・掻破痕・ごわつきが散らばる。体幹の約1〜2割。",ans:[1,1,1,1,2]},
+   {k:"l",n:"下肢",w:[.4,.3],desc:"ひざの裏とすねに、中等度の紅斑・浸潤・掻破痕・苔癬化。下肢の約3割。",ans:[2,2,2,2,3]}];
+  const SIG=["紅斑","浸潤・丘疹","掻破痕","苔癬化","面積"];
+  const val=REG.map(()=>[0,0,0,0,0]);let older=true;
+  const d=sheet(box,`<div class="chips"><button class="chip" type="button" aria-pressed="true" data-age="o">8歳以上</button><button class="chip" type="button" aria-pressed="false" data-age="y">7歳以下</button></div>
+   <div class="easi">${REG.map((r,ri)=>`<div class="ereg"><h4><span>${r.n} <span class="note" data-w="${ri}"></span></span><span class="num" data-rs="${ri}">0.0</span></h4><p>${r.desc}</p>
+    <div class="egrid">${SIG.map((s,si)=>`<div class="estep" data-c="${ri}-${si}"><span>${s}</span><span class="sv"><button type="button" data-d="-1" aria-label="${r.n}${s}を下げる">−</button><b>0</b><button type="button" data-d="1" aria-label="${r.n}${s}を上げる">＋</button></span></div>`).join("")}</div></div>`).join("")}</div>
+   <div class="row" style="justify-content:space-between;align-items:flex-end"><div><span class="lbl">EASI 合計</span><div class="big" data-tot>0.0</div></div><button class="btn solid" type="button" data-chk>指導医と答え合わせ</button></div>
+   <p class="note">面積スコア：0＝なし、1＝10%未満、2＝10〜29%、3＝30〜49%、4＝50〜69%、5＝70〜89%、6＝90〜100%</p><div class="fb"></div>`);
+  const W=ri=>REG[ri].w[older?0:1];
+  const rs=ri=>(val[ri].slice(0,4).reduce((a,b)=>a+b,0))*val[ri][4]*W(ri);
+  function upd(){REG.forEach((r,ri)=>{$(`[data-rs="${ri}"]`,d).textContent=rs(ri).toFixed(1);$(`[data-w="${ri}"]`,d).textContent="×"+W(ri)});
+   $("[data-tot]",d).textContent=REG.reduce((a,_,ri)=>a+rs(ri),0).toFixed(1)}
+  $$(".estep",d).forEach(el=>{const [ri,si]=el.dataset.c.split("-").map(Number);$$("button",el).forEach(b=>b.addEventListener("click",()=>{
+   val[ri][si]=cl(val[ri][si]+ +b.dataset.d,0,si===4?6:3);$("b",el).textContent=val[ri][si];el.classList.remove("hit","miss");play("tick");upd()}))});
+  $$("[data-age]",d).forEach(c=>c.addEventListener("click",()=>{older=c.dataset.age==="o";$$("[data-age]",d).forEach(x=>x.setAttribute("aria-pressed",x===c));play("tap");upd()}));
+  $("[data-chk]",d).addEventListener("click",()=>{let hit=0;REG.forEach((r,ri)=>SIG.forEach((s,si)=>{const el=$(`[data-c="${ri}-${si}"]`,d),ok=val[ri][si]===r.ans[si];el.classList.toggle("hit",ok);el.classList.toggle("miss",!ok);if(ok)hit++}));
+   const me=REG.reduce((a,_,ri)=>a+rs(ri),0),ok=older&&Math.abs(me-16.8)<=3;grade("teen-easi",ok);if(ok)win("EASI 採点OK！");
+   $(".fb",d).innerHTML=coach(ok?"happy":"think",`指導医の採点は <b>16.8点</b>（頭頸部 1.6・上肢 3.2・体幹 2.4・下肢 9.6）。あなたは ${me.toFixed(1)}点、20項目中 ${hit}項目が一致。${older?"":"ハヤトくんは14歳なので「8歳以上」の係数を使います。"}<br>EASI 16以上は、多くの全身療法薬の使用基準のひとつです。下肢は係数0.4と大きいので、面積の見積もりが点数を大きく動かします。`,ok?"ok":"ng")});
+  upd();
+ }},
+ {h:"生活への影響を見る",r(box){
+  msq(box,{key:"teen-burden",q:"ハヤトくんの話から読みとれる「疾病負荷」は？",
+   items:[{t:"睡眠障害（かゆみで目が覚める・日中の眠気）",c:1},{t:"感情的負担（恥ずかしさ、人の目が気になる）",c:1},{t:"学業への影響（授業中の眠気）",c:1},{t:"保護者のストレス・将来への不安",c:1},{t:"とくに負担はない",c:0}],
+   exp:"ADはいじめ、学業成績低下や欠席日数の増加、保護者の仕事への影響や経済的負担とも関連します。皮膚だけでなく<b>生活</b>を見て評価しましょう。"});
+  mcq(box,{key:"teen-qol",q:"14歳のハヤトくんのQOL評価に使う質問票は？",opts:["IDQOL","CDLQI","DLQI"],a:1,
+   hints:{0:"IDQOLは4歳未満向けです。",2:"DLQIは16歳以上向けです。"},
+   exp:"4歳未満は IDQOL、4〜15歳は <b>CDLQI</b>、16歳以上は DLQI。患者さん自身がつける重症度評価には <b>POEM</b> もあります。医師の評価（めやす・IGA・EASI）と合わせて見ます。"});
+ }},
+ {h:"次の一手を考える",r(box){
+  sheet(box,coach("think","本人が管理していて、非ステロイド外用薬もプロアクティブ療法もしている。なのに悪くなっている。考えられる問題を一つずつ見ていきましょう。"));
+  match(box,{key:"teen-next",q:"問題点と対策を組み合わせましょう。",
+   rows:[{t:"アドヒアランスは本当に保たれている？",opts:["処方薬の残りの量を確認する","本人を信じてそのまま","外用薬を全部やめる"],a:0,why:"使った量（本数）を数えると、実際に塗れているかがわかります。"},
+    {t:"外用療法で寛解を保てない（中等症以上の難治状態）",opts:["ステロイドのランクをⅠ群に上げて全身へ","全身療法の導入を検討する","保湿剤を増やすだけ"],a:1},
+    {t:"これからの見通しが立っていない",opts:["成人したら自然に治ると伝える","予想される経過を説明し、成人に向けた移行期医療を進める","今は考えなくてよいと伝える"],a:1}]});
+  const DR=[{t:"IL-4/13",n:"デュピルマブ",b:"デュピクセント®",r:"皮下注",age:0.5,easi:16,pre:"6か月"},
+   {t:"IL-13",n:"トラロキヌマブ",b:"アドトラーザ®",r:"皮下注",age:15,easi:16,pre:"6か月"},
+   {t:"IL-13",n:"レブリキズマブ",b:"イブグリース®",r:"皮下注",age:12,easi:16,pre:"6か月"},
+   {t:"IL-31",n:"ネモリズマブ",b:"ミチーガ®",r:"皮下注",age:6,easi:10,pre:"4週間",itch:1},
+   {t:"JAK",n:"バリシチニブ",b:"オルミエント®",r:"内服",age:2,easi:16,pre:"6か月"},
+   {t:"JAK",n:"ウパダシチニブ",b:"リンヴォック®",r:"内服",age:12,easi:16,pre:"6か月"},
+   {t:"JAK",n:"アブロシチニブ",b:"サイバインコ®",r:"内服",age:12,easi:16,pre:"6か月"}];
+  const d=sheet(box,`<h3>全身療法薬の早見表</h3><p class="note">年齢とEASIを動かすと、基準を満たす薬が光ります（前治療の期間なども必要。スライドの表による。実際は最新の添付文書・最適使用推進ガイドラインを確認）。</p>
+   <div class="ctrl"><label for="tAge">年齢：<b data-ta></b> 歳</label><input id="tAge" type="range" min="0" max="18" value="14"></div>
+   <div class="ctrl"><label for="tEasi">EASI：<b data-te></b></label><input id="tEasi" type="range" min="0" max="40" value="17"></div>
+   <div class="opts" data-dr></div>`);
+  function upd(){const a=+$("#tAge").value,e=+$("#tEasi").value;$("[data-ta]",d).textContent=a===0?"0（6か月〜）":a;$("[data-te]",d).textContent=e;
+   $("[data-dr]",d).innerHTML=DR.map(x=>{const ok=(a>=x.age||(x.age===0.5&&a>=0))&&e>=x.easi;return `<div class="opt ${ok?"right":""}" style="cursor:default;${ok?"":"opacity:.55"}"><span class="num" style="font-size:12px;border:2px solid var(--gline);border-radius:8px;padding:0 6px;margin-right:6px">${x.t}</span><b>${x.n}</b>（${x.b}）${x.r}<span class="note" style="display:block;font-weight:600">${x.age===0.5?"生後6か月":x.age+"歳"}〜・EASI ${x.easi}以上（前治療 ${x.pre}）${x.itch?"・かゆみの治療薬":""}</span></div>`}).join("")}
+  $("#tAge").addEventListener("input",()=>{upd();play("tick")});$("#tEasi").addEventListener("input",()=>{upd();play("tick")});upd();
+  mcq(box,{key:"teen-drug",q:"14歳・EASI 16.8・外用治療を6か月以上続けているハヤトくん。年齢の基準でまだ使えないのは？",
+   opts:["デュピルマブ","トラロキヌマブ","ウパダシチニブ","ネモリズマブ"],a:1,
+   hints:{0:"生後6か月から使えます。",2:"12歳から使えます。",3:"6歳から使えます（EASI 10以上）。"},
+   exp:"トラロキヌマブは<b>15歳から</b>です。全身療法を始めても、外用療法とスキンケアは続けます。"});
+  sheet(box,`<h3>移行期医療</h3><div class="tipbox">11〜13歳ごろから25歳ごろにかけて、<b>保護者が主体の治療</b>から<b>患者自身が主体の治療</b>へ移ります。自己管理の教育、チームでの体系的な関わり、継続的なモニタリングと効果の評価、家族や友人を巻き込むことが大切です。成人後も皮膚科で診療を続けられることが多いですが、ただ転科するのではなく、自分で管理できるようチームで取り組みます。</div>
+   <p class="note">小児期のADが長引きやすい因子：遺伝的要因（FLG遺伝子変異、父親の喘息など）、発症時の重症度・遅発例・長期持続例、小児期のアレルギー性鼻炎や手湿疹の既往 など。</p>`);
+ }}
+ ],
+ take:["重症度のめやすは「強い炎症を伴う皮疹」の面積で判定（10%未満＝中等症）。手のひら1枚≒1%。","EASIは4部位 ×（性状の合計 × 面積スコア × 係数）。8歳以上は下肢0.4。EASI 16以上は全身療法の基準のひとつ。","睡眠・感情・学業など、生活への影響も評価します。QOLは年齢で質問票を選びます（4〜15歳はCDLQI）。","悪化したら、まずアドヒアランス（薬の残量）を確認。外用で保てなければ全身療法を検討し、成人へ向けて移行期医療を進めます。"]}
+];
+const CASE_BY=Object.fromEntries(CASES.map(c=>[c.id,c]));
+
+/* ============ 画面 ============ */
+const app=$("#app");let titleEl=null,S={view:"home",id:null,step:0};
+function stars(n){return `<span class="stars" aria-label="星${n||0}つ">${[1,2,3].map(i=>i<=(n||0)?"★":`<span class="off">★</span>`).join("")}</span>`}
+function totalStars(){return CASES.reduce((a,c)=>a+(PROG[c.id]||0),0)}
+function pctAll(){return Math.round(totalStars()/(CASES.length*3)*100)}
+function bgm(){try{BGM.want(titleEl&&!titleEl.hidden?"title":S.view==="home"?"day":S.view==="sum"?"epilogue":"notebook")}catch(e){}}
+
+function showTitle(){
+  const next=CASES.find(c=>!PROG[c.id]);
+  if(!titleEl){titleEl=document.createElement("div");titleEl.className="title";document.body.appendChild(titleEl)}
+  titleEl.innerHTML=`<div class="tstage">
+    <div class="tlogo"><span class="tag">「触って覚える！」シリーズ ・ 小児のアトピー性皮膚炎</span>
+      <img class="tlogoimg" src="${IMG("logo_atopy")}" alt="触って覚える！ アトピー性皮膚炎マスター" onerror="this.nextElementSibling.hidden=false;this.nextElementSibling.nextElementSibling.hidden=false;this.remove()">
+      <h1 class="series" hidden><span class="k1">触</span><span class="k2">っ</span><span class="k3">て</span><span class="k4">覚</span><span class="k1">え</span><span class="k2">る</span><span class="k3">！</span></h1>
+      <span class="name" hidden>アトピー性皮膚炎マスター</span></div>
+    <div class="tcast"><img class="tm" src="${ART("mascot_happy")}" alt=""><img src="${ART("doctor_normal")}" alt="いぶき先生"><img class="tn" src="${IMG("nurse_minami")}" alt="看護師ミナミ" onerror="this.remove()">
+      <svg class="tube" viewBox="0 0 70 120" aria-hidden="true"><rect x="16" y="22" width="38" height="84" rx="8" fill="#fff" stroke="#2E2545" stroke-width="4"/><path d="M16 96h38v8a6 6 0 0 1-6 6H22a6 6 0 0 1-6-6z" fill="#FFC53D" stroke="#2E2545" stroke-width="4"/><rect x="26" y="6" width="18" height="18" rx="4" fill="#FF7FA4" stroke="#2E2545" stroke-width="4"/><rect x="22" y="44" width="26" height="30" rx="6" fill="#E3ECFF" stroke="#2E2545" stroke-width="3"/><text x="35" y="64" text-anchor="middle" font-size="14" font-weight="800" fill="#2E2545" font-family="M PLUS Rounded 1c,sans-serif">Ⅲ</text></svg></div>
+    <div class="tsay">こんどは皮膚です。かゆみの悪循環を回して、<br>指に薬をのせて、3人の子どもの肌を守りましょう。</div>
+    <div class="tmenu">
+      <button class="tbtn go" type="button" data-t="go"><img src="${ART("icon_go")}" alt=""><span><b>${next?(totalStars()?"つづきから":"はじめる"):"もう一度あそぶ"}</b><i>${next?next.code+"　"+next.title:"すべての症例をクリア済み"}</i></span></button>
+      <button class="tbtn" type="button" data-t="list"><img src="${ART("icon_course")}" alt=""><span><b>症例の一覧</b><i>しくみ編と、乳児・学童・思春期の3症例</i></span></button>
+      <button class="tbtn" type="button" data-t="about"><img src="${ART("icon_about")}" alt=""><span><b>このアプリについて</b><i>遊び方と出典</i></span></button>
+    </div>
+    <div class="tfoot"><div class="tprog"><i style="width:${pctAll()}%"></i></div><span class="tpct">★${totalStars()}/${CASES.length*3}</span>${sndBtn()}</div></div>`;
+  titleEl.hidden=false;
+  $$("[data-t]",titleEl).forEach(b=>b.addEventListener("click",()=>{play("tap");const t=b.dataset.t;
+    if(t==="about"){about();return}
+    titleEl.hidden=true;if(t==="go")openCase((next||CASES[0]).id);else home();}));
+  bgm();
+}
+function about(){
+  const m=document.createElement("div");m.className="modal";
+  m.innerHTML=`<div class="mbox" role="dialog" aria-modal="true" aria-labelledby="abH"><div class="mhead"><h3 id="abH">このアプリについて</h3><button type="button">とじる</button></div>
+   <div class="mbody">${coach("happy","「触って覚える！」シリーズのアトピー性皮膚炎編です。しくみ編で悪循環と三本柱を体験してから、乳児・学童・思春期の3人を診ていきます。")}
+   <p><b>しくみ編</b>　かゆみの悪循環を回し、三本柱のスイッチで断ち切ります。<br><b>症例①（5か月）</b>　診断基準、ステロイドのランクと塗り方、FTUと処方量、ステロイドへの不安、スキンケア。<br><b>症例②（9歳）</b>　寛解導入、プロアクティブ療法、非ステロイド外用薬、治療主体の移行。<br><b>症例③（14歳）</b>　重症度のめやす、EASI、QOL、全身療法、移行期医療。</p>
+   <p>一度目の解答で正解した割合で、症例ごとに★1〜3がつきます。進み具合はこの端末のブラウザに保存されます。</p>
+   <p class="note">内容は PASCO 2026 小児アレルギー（アトピー性皮膚炎）セッションのスライドと、アトピー性皮膚炎診療ガイドライン2024をもとにしています。症例は学習用に作ったものです。薬の適応年齢・使用基準は変わることがあるため、実際の診療では最新の添付文書・ガイドラインと各施設の方針に従ってください。部位別吸収率は Feldmann RJ, Maibach HI（1967）、FTUの量は Long CC, et al.（1991）による。</p></div></div>`;
+  const close=()=>m.remove();m.addEventListener("click",e=>{if(e.target===m)close()});$(".mhead button",m).addEventListener("click",close);document.body.appendChild(m);
+}
+function home(){
+  S={view:"home",id:null,step:0};
+  const basic=CASES[0],cs=CASES.slice(1);
+  const item=c=>`<button class="item ${PROG[c.id]?"done":""}" type="button" data-chap="${c.chap}" data-id="${c.id}"><span class="ic">${c.kid?`<img src="${IMG("kid_"+c.kid+"_normal")}" alt="" onerror="this.replaceWith(document.createTextNode('${c.init}'))">`:`<img src="${ART("mascot_excited")}" alt="">`}</span>
+   <span class="tx"><small class="num">${c.code}${c.pt?"　"+c.pt.age:""}</small><b>${c.title}</b><small>${c.sub}</small></span>${stars(PROG[c.id])}</button>`;
+  app.innerHTML=`<div class="wrap">
+   <div class="home-hero"><div class="eyebrow">触って覚える！</div><h1>アトピー性皮膚炎<wbr>マスター</h1><p>かゆみの悪循環を断ち切る。<br>3人の子どもを、診断から長期管理まで。</p>
+    <div class="bigprog"><div class="bar2"><i style="width:${pctAll()}%"></i></div><span class="pct">★${totalStars()}/${CASES.length*3}</span></div>
+    <div class="hrow"><button class="hbtn" type="button" data-h="title">タイトルへ</button><button class="hbtn" type="button" data-h="about">このアプリについて</button>${sndBtn()}</div>
+    <img class="hdoc" src="${ART("doctor_happy")}" alt=""></div>
+   <div class="cat" data-chap="0"><h2>まずはしくみ</h2><div class="list">${item(basic)}</div></div>
+   <div class="cat" data-chap="1"><h2>3人の子どもを診る</h2><div class="list">${cs.map(item).join("")}</div></div>
+   <p class="note" style="margin-top:18px">PASCO 2026 アトピー性皮膚炎セッションの教材をもとに作った学習用アプリです。症例は架空です。</p></div>`;
+  $$(".item",app).forEach(b=>b.addEventListener("click",()=>{play("tap");openCase(b.dataset.id)}));
+  $$("[data-h]",app).forEach(b=>b.addEventListener("click",()=>{play("tap");b.dataset.h==="about"?about():showTitle()}));
+  window.scrollTo(0,0);bgm();
+}
+function openCase(id){
+  const c=CASE_BY[id];G={ok:0,n:0,seen:new Set()};S={view:"case",id,step:0};
+  try{BGM.jingle("chapter")}catch(e){}
+  renderStep();
+}
+function renderStep(){
+  const c=CASE_BY[S.id],n=c.steps.length,last=S.step>=n;
+  S.view=last?"sum":"case";
+  app.innerHTML=`<div data-chap="${c.chap}"><div class="top"><div class="wrap"><div class="bar"><button class="back" type="button" data-back>‹ 一覧</button><h1>${c.title}</h1><span class="badge">${c.code}</span></div>
+   <div class="stepper">${c.steps.map((s,i)=>`<button type="button" class="${i<S.step?"done":i===S.step?"now":""}" data-go="${i}" aria-label="${i+1}. ${s.h}"></button>`).join("")}<button type="button" class="${last?"now":""}" data-go="${n}" aria-label="まとめ"></button></div></div></div>
+   <div class="wrap"><div class="sec" data-box></div></div></div>`;
+  const box=$("[data-box]",app);
+  if(!last){
+    box.insertAdjacentHTML("beforeend",`<div class="stephead"><span class="stepno">STEP ${S.step+1}/${n}</span><h2>${c.steps[S.step].h}</h2></div>`);
+    c.steps[S.step].r(box);
+    box.insertAdjacentHTML("beforeend",`<div class="nav"><button class="btn" type="button" data-prev ${S.step?"":"disabled"}>‹ もどる</button><button class="btn solid" type="button" data-next>${S.step===n-1?"まとめへ ›":"つぎへ ›"}</button></div>`);
+  }else summary(c,box);
+  $("[data-back]",app).addEventListener("click",()=>{play("tap");home()});
+  $$("[data-go]",app).forEach(b=>b.addEventListener("click",()=>{S.step=+b.dataset.go;play("tap");renderStep()}));
+  const pv=$("[data-prev]",app),nx=$("[data-next]",app);
+  if(pv)pv.addEventListener("click",()=>{S.step--;play("tap");renderStep()});
+  if(nx)nx.addEventListener("click",()=>{S.step++;play("tap");renderStep()});
+  window.scrollTo(0,0);bgm();
+}
+function summary(c,box){
+  const r=G.n?G.ok/G.n:0,st=G.n===0?1:r>=.85?3:r>=.6?2:1;
+  if(G.n)PROG[c.id]=Math.max(PROG[c.id]||0,st);save();
+  const idx=CASES.indexOf(c),nx=CASES[idx+1];
+  box.innerHTML=`<div class="sheet stack"><div class="result-top"><div style="flex:1;min-width:0"><span class="lbl">${c.code} クリア</span><h2 style="font-size:20px">${c.title}</h2>
+    <div class="row" style="margin-top:6px"><span class="big">${G.ok}<span style="font-size:24px">/${G.n}</span></span>${stars(st)}</div><p class="note">一度目で正解した問題の数</p></div>
+    <img src="${c.kid?IMG("kid_"+c.kid+"_happy"):ART("mascot_excited")}" alt="" onerror="this.src='${ART("doctor_happy")}'"></div></div>
+   <div class="sheet stack"><h3>覚えておくこと</h3><ul class="takeaways">${c.take.map(t=>`<li>${t}</li>`).join("")}</ul></div>
+   <div class="nav"><button class="btn" type="button" data-again>もう一度</button>${nx?`<button class="btn solid" type="button" data-nx>つぎ：${nx.code} ›</button>`:`<button class="btn solid" type="button" data-home>一覧へ</button>`}</div>`;
+  if(CASES.every(x=>PROG[x.id]))box.insertAdjacentHTML("afterbegin",`<div class="scene" style="background-image:url('${IMG("cg_epilogue")}'),url('${IMG("bg_clinic")}')"><div class="scene-tag"><b>全症例クリア！</b><span>3人とも、肌の調子が落ち着きました</span></div></div>`);
+  if(st===3)setTimeout(()=>win(c.code+" ★3つ！"),200);
+  $("[data-again]",box).addEventListener("click",()=>openCase(c.id));
+  const b=$("[data-nx]",box);if(b)b.addEventListener("click",()=>openCase(nx.id));
+  const h=$("[data-home]",box);if(h)h.addEventListener("click",home);
+}
+home();showTitle();
+</script>
+</body>
+</html>
