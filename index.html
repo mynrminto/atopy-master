@@ -206,6 +206,15 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .vital span{display:block;font-size:10.5px;color:var(--ink-3);font-weight:800}
 .vital b{font-size:13.5px;font-weight:800;line-height:1.45;display:block}
 
+.talknext{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:3px dashed var(--chap);background:color-mix(in srgb,var(--chap) 8%,#fff);border-radius:14px;padding:10px;font-weight:800;font-size:14px;cursor:pointer;color:var(--ink)}
+.talknext .tri{color:var(--chap);animation:vnfloat 1.2s ease-in-out infinite}
+@keyframes vnfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.talkbar{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.talkbar .num{font-size:13px;color:var(--ink-3)}
+.skip{border:2px solid var(--gline);background:#fff;border-radius:99px;padding:1px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.story.new{animation:storyin .28s ease-out}
+@keyframes storyin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.story.doc{margin-left:28px}.story:not(.doc){margin-right:28px}
 /* ---------- 皮膚マップ ---------- */
 .bodywrap{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:12px;align-items:start}
 @media(max-width:460px){.bodywrap{grid-template-columns:minmax(0,150px) minmax(0,1fr)}}
@@ -471,6 +480,24 @@ function skinMap(box,{kind,map,intro}){
   return d;
 }
 
+/* 問診：タップで一言ずつ進める */
+function talk(box){
+  const stories=$$(".story",box);if(!stories.length)return;
+  const holder=stories[0].parentElement,rest=$$(":scope > .sheet",box).filter(x=>x!==holder&&!x.contains(stories[0]));
+  const navNext=()=>$("[data-next]",app);
+  let k=1;stories.forEach((x,i)=>x.hidden=i>0);rest.forEach(x=>x.hidden=true);
+  holder.insertAdjacentHTML("afterbegin",`<div class="talkbar"><span class="lbl">問診</span><span class="num" data-tc></span><button class="skip" type="button" data-skip>全部見る</button></div>`);
+  holder.insertAdjacentHTML("beforeend",`<button class="talknext" type="button" data-tn><span class="tri">▼</span>タップしてつづきを聞く</button>`);
+  const btn=$("[data-tn]",holder),cnt=$("[data-tc]",holder);
+  const done=()=>{btn.remove();$("[data-skip]",holder).remove();rest.forEach(x=>{x.hidden=false;x.classList.add("story-in")});cnt.textContent=stories.length+"/"+stories.length;const n=navNext();if(n)n.disabled=false};
+  const upd=()=>{cnt.textContent=k+"/"+stories.length};upd();
+  const next=()=>{if(k>=stories.length)return;const x=stories[k++];x.hidden=false;x.classList.add("new");play("tap");upd();
+    if(k>=stories.length)done();else btn.scrollIntoView({block:"nearest",behavior:"smooth"})};
+  btn.addEventListener("click",e=>{e.stopPropagation();next()});
+  holder.addEventListener("click",e=>{if(e.target.closest("button"))return;next()});
+  $("[data-skip]",holder).addEventListener("click",()=>{stories.forEach(x=>x.hidden=false);k=stories.length;play("tap");done()});
+  setTimeout(()=>{const n=navNext();if(n&&k<stories.length)n.disabled=true},0);
+}
 /* ============ 症例 ============ */
 const CASES=[
 /* ---------------- しくみ編 ---------------- */
@@ -953,6 +980,7 @@ function renderStep(){
   if(!last){
     box.insertAdjacentHTML("beforeend",`<div class="stephead"><span class="stepno">STEP ${S.step+1}/${n}</span><h2>${c.steps[S.step].h}</h2></div>`);
     c.steps[S.step].r(box);
+    if(c.steps[S.step].h==="問診")talk(box);
     box.insertAdjacentHTML("beforeend",`<div class="nav"><button class="btn" type="button" data-prev ${S.step?"":"disabled"}>‹ もどる</button><button class="btn solid" type="button" data-next>${S.step===n-1?"まとめへ ›":"つぎへ ›"}</button></div>`);
   }else summary(c,box);
   $("[data-back]",app).addEventListener("click",()=>{play("tap");home()});
